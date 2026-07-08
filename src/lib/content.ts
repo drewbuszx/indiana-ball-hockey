@@ -129,6 +129,22 @@ export const communityPhotos = {
     src: "/assets/ellen.png",
     alt: "Ball hockey action at Ellenberger Park",
   },
+  ellen3: {
+    src: "/assets/ellen3.png",
+    alt: "Ellenberger Ball Hockey Club team celebration",
+  },
+  historyRooftop: {
+    src: "/assets/ellen2.png",
+    alt: "Ball hockey action at Ellenberger Park",
+  },
+  historyEllenberger: {
+    src: "/assets/rooff.jpg",
+    alt: "Indy Rooftop Hockey League team celebration",
+  },
+  historyNbhl: {
+    src: "/assets/rbow.jpg",
+    alt: "Indiana Ball Hockey Association pride logo",
+  },
   heroAction: {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",

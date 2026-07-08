@@ -71,8 +71,8 @@ export default function LeaguesPage() {
         <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
           {[
             communityPhotos.rooftopKreezeeBg,
-            communityPhotos.team,
-            communityPhotos.trophies,
+            communityPhotos.ellen3,
+            communityPhotos.orange,
           ].map((photo) => (
             <div
               key={photo.src}
