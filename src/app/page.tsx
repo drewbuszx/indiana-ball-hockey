@@ -75,8 +75,8 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src={communityPhotos.whiteJersey.src}
-              alt={communityPhotos.whiteJersey.alt}
+              src={communityPhotos.nbhlAction.src}
+              alt={communityPhotos.nbhlAction.alt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

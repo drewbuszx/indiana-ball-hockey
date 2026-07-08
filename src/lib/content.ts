@@ -133,6 +133,10 @@ export const communityPhotos = {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",
   },
+  nbhlAction: {
+    src: "/assets/nbhl-action.jpg",
+    alt: "Ball hockey players competing at Ellenberger Park",
+  },
   rooftopKreezeeBg: {
     src: "/assets/rooftop-kreezee-bg.jpg",
     alt: "Indy Rooftop Hockey League rink at dusk",
