@@ -127,8 +127,8 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
               <Image
-                src={communityPhotos.jerseyCream.src}
-                alt={communityPhotos.jerseyCream.alt}
+                src={communityPhotos.rink.src}
+                alt={communityPhotos.rink.alt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
