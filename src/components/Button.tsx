@@ -5,20 +5,21 @@ import type { ComponentProps } from "react";
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps extends ComponentProps<"button"> {
+interface ButtonProps extends Omit<ComponentProps<"button">, "children"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   href?: string;
   external?: boolean;
+  children?: React.ReactNode;
 }
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-gold text-arena hover:bg-gold-light focus-visible:ring-gold shadow-lg shadow-gold/20 hover:shadow-gold/30 hover:-translate-y-0.5",
+    "bg-gold text-arena hover:bg-gold-light focus-visible:ring-gold shadow-lg shadow-gold/20 hover:shadow-gold/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
   secondary:
-    "border border-rink-400/60 bg-rink-500/10 text-white hover:bg-rink-500/25 hover:border-rink-300 focus-visible:ring-rink-400",
+    "border border-rink-400/60 bg-rink-500/10 text-white hover:bg-rink-500/25 hover:border-rink-300 focus-visible:ring-rink-400 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
   ghost:
-    "text-rink-200 hover:text-white hover:bg-white/5 focus-visible:ring-rink-400",
+    "text-rink-200 hover:text-white hover:bg-white/5 focus-visible:ring-rink-400 underline-offset-4 hover:underline",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -51,6 +52,7 @@ export function Button({
         {...(external
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
+        {...(props as Omit<ComponentProps<typeof Link>, "href" | "className">)}
       >
         {children}
         {external && <span className="sr-only">(opens in new tab)</span>}

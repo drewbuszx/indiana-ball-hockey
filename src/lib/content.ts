@@ -193,6 +193,10 @@ export const communityPhotos = {
     src: "/assets/ball.png",
     alt: "IBHA-branded ball hockey ball on the rink",
   },
+  irhlLogo: {
+    src: "/assets/irhl.png",
+    alt: "Indy Rooftop Hockey League crest",
+  },
   storeHero: {
     src: "/assets/store-hero.png",
     alt: "Navy IBHA jersey with orange mascot crest and number 15",
@@ -224,15 +228,14 @@ export const galleryPhotos = [
 ] as const;
 
 export const contactConnectPhotos = [
-  { ...communityPhotos.ball, fit: "cover" as const },
+  { ...communityPhotos.ball, fit: "contain" as const },
   {
     src: "/assets/ellenberger-logo.png",
     alt: "Ellenberger Ball Hockey League crest",
     fit: "contain" as const,
   },
   {
-    src: "/assets/rooftop-logo.png",
-    alt: "Indy Rooftop Hockey League crest",
+    ...communityPhotos.irhlLogo,
     fit: "contain" as const,
   },
   { ...communityPhotos.jerseyNavy, fit: "cover" as const },
@@ -269,7 +272,7 @@ export const leagues = [
     href: externalLinks.rooftopLeague,
     image: communityPhotos.rooftop.src,
     imageAlt: communityPhotos.rooftop.alt,
-    logo: "/assets/rooftop-logo.png",
+    logo: "/assets/irhl.png",
     logoTile: "none",
     badge: "3v3",
   },
@@ -307,6 +310,54 @@ export const leagueTeamLogos = {
     ],
   },
 } as const;
+
+export const leagueCompare = [
+  { label: "Format", ellenberger: "5-on-5", rooftop: "3-on-3" },
+  { label: "Rink Size", ellenberger: "Full-size indoor", rooftop: "60×40 ft rooftop" },
+  { label: "Surface", ellenberger: "Sport Court", rooftop: "Dek / outdoor surface" },
+  {
+    label: "Location",
+    ellenberger: "Ellenberger Park, Irvington",
+    rooftop: "Near Eastside Indy",
+  },
+  { label: "Vibe", ellenberger: "Standard league play", rooftop: "Fast, tight, urban" },
+  {
+    label: "Best For",
+    ellenberger: "Competitive & rec adults",
+    rooftop: "High-tempo 3v3 players",
+  },
+] as const;
+
+export const contactAudiences = [
+  {
+    title: "New Players",
+    description:
+      "Curious about ball hockey? Ask us anything — we'll help you find the right league and get on the rink.",
+    cta: "Message on Facebook",
+    href: socialLinks.facebook,
+  },
+  {
+    title: "Current Players",
+    description:
+      "League questions, schedule info, or community updates — connect with IBHA on social for the latest.",
+    cta: "Follow on Instagram",
+    href: socialLinks.instagram,
+  },
+  {
+    title: "Sponsors & Partners",
+    description:
+      "Help us build Indiana's ball hockey future. We're actively seeking sponsors, partners, and donors for our year-round facility vision.",
+    cta: "Reach Out",
+    href: socialLinks.facebook,
+  },
+  {
+    title: "Parents & Youth",
+    description:
+      "Interested in youth programming? Connect with us — we're working to expand opportunities for the next generation of players.",
+    cta: "Contact via Social",
+    href: socialLinks.facebook,
+  },
+] as const;
 
 export const timelineEvents = [
   {

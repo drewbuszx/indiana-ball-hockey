@@ -4,11 +4,17 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
-    @apply font-body;
+    @apply font-body text-base leading-relaxed;
   }
 
   ::selection {
@@ -21,12 +27,16 @@
     @apply rounded-2xl border border-white/10 bg-arena-elevated/80 backdrop-blur-md;
   }
 
+  .glass-card-interactive {
+    @apply glass-card transition-all duration-300 hover:-translate-y-1 hover:border-rink-400/30 hover:shadow-xl hover:shadow-black/20;
+  }
+
   .section-pad {
-    @apply px-5 py-20 sm:px-8 lg:px-12 xl:px-16 2xl:px-24;
+    @apply px-5 py-16 sm:px-8 sm:py-20 lg:px-12 xl:px-16 2xl:px-24;
   }
 
   .headline-xl {
-    @apply font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl;
+    @apply font-display text-4xl font-bold uppercase leading-[1.0] tracking-tight sm:text-5xl sm:leading-[0.95] md:text-6xl lg:text-7xl;
   }
 
   .headline-lg {
@@ -35,6 +45,22 @@
 
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-[0.2em] text-rink-300;
+  }
+
+  .prose-body {
+    @apply text-white/70 leading-relaxed;
+  }
+
+  .prose-muted {
+    @apply text-sm text-white/55 leading-relaxed;
+  }
+
+  .media-frame {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated;
+  }
+
+  .media-frame-overlay {
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-arena/60 via-arena/10 to-transparent;
   }
 }
 
@@ -45,5 +71,16 @@
 
   .grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-slide-in {
+    animation: none !important;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
   }
 }

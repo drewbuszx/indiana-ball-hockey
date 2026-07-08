@@ -3,29 +3,37 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { externalLinks, communityPhotos } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
+import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Store",
   description:
     "Shop official Indiana Ball Hockey Association apparel, team gear, and league swag at the IBHA store powered by Hagan Custom Sports.",
-};
+  path: "/store",
+});
 
 const products = [
   {
     title: "Team Apparel",
     description: "Jerseys, hoodies, and team-specific gear for IBHA leagues.",
     image: communityPhotos.storeSuggly,
+    contain: true,
   },
   {
     title: "League Swag",
-    description: "Show your Ellenberger or Rooftop pride with official league merchandise.",
+    description:
+      "Show your Ellenberger or Rooftop pride with official league merchandise.",
     image: communityPhotos.storeJersey1,
+    contain: true,
   },
   {
     title: "IBHA Brand Gear",
-    description: "Association-branded apparel for players, fans, and supporters.",
+    description:
+      "Association-branded apparel for players, fans, and supporters.",
     image: communityPhotos.storeJersey3,
+    contain: true,
   },
 ] as const;
 
@@ -48,7 +56,7 @@ export default function StorePage() {
 
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative aspect-square max-w-md overflow-hidden rounded-2xl border border-white/10 mx-auto lg:mx-0">
+          <div className="media-frame mx-auto aspect-square max-w-md lg:mx-0">
             <Image
               src={communityPhotos.storeHero.src}
               alt={communityPhotos.storeHero.alt}
@@ -64,7 +72,7 @@ export default function StorePage() {
               title="Official Gear & Apparel"
               description="Powered by Hagan Custom Sports — your source for authentic IBHA merchandise."
             />
-            <p className="text-white/70 leading-relaxed">
+            <p className="prose-body">
               Whether you&apos;re suiting up for game night or repping IBHA off
               the rink, our official store has team apparel, league swag, and
               association gear ready to order.
@@ -93,16 +101,23 @@ export default function StorePage() {
         />
         <div className="grid gap-6 sm:grid-cols-3">
           {products.map((product) => (
-            <div
+            <Link
               key={product.title}
-              className="glass-card overflow-hidden text-center transition-all hover:border-gold/30"
+              href={externalLinks.store}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card-interactive group block overflow-hidden text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400"
             >
-              <div className="relative aspect-[4/3]">
+              <div className="relative aspect-[4/3] bg-arena-elevated">
                 <Image
                   src={product.image.src}
                   alt={product.image.alt}
                   fill
-                  className="object-cover"
+                  className={
+                    product.contain
+                      ? "object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                      : "object-cover transition-transform duration-300 group-hover:scale-105"
+                  }
                   sizes="(max-width: 640px) 100vw, 33vw"
                   loading="lazy"
                 />
@@ -111,9 +126,14 @@ export default function StorePage() {
                 <h3 className="font-display text-lg font-bold uppercase text-rink-300">
                   {product.title}
                 </h3>
-                <p className="mt-2 text-sm text-white/65">{product.description}</p>
+                <p className="mt-2 text-sm text-white/65">
+                  {product.description}
+                </p>
+                <span className="mt-3 inline-block text-xs font-semibold uppercase tracking-wide text-gold opacity-0 transition-opacity group-hover:opacity-100">
+                  Shop now →
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="mt-12 text-center">

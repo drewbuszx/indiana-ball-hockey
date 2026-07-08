@@ -3,15 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { SocialLinks } from "./SocialLinks";
 
+const externalLinkClass =
+  "text-sm text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 rounded";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-arena-surface">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12">
+    <footer className="border-t border-white/10 bg-gradient-to-b from-arena to-arena-surface">
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block">
+            <Link
+              href="/"
+              className="inline-block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400"
+              aria-label={`${siteConfig.name} — Home`}
+            >
               <Image
                 src="/assets/logo.png"
                 alt={siteConfig.name}
@@ -21,7 +28,7 @@ export function Footer() {
                 loading="lazy"
               />
             </Link>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">
+            <p className="mt-4 max-w-md prose-muted">
               {siteConfig.description}
             </p>
             <div className="mt-6">
@@ -30,16 +37,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="font-display text-sm font-bold uppercase tracking-wider text-white">
-              Explore
-            </h2>
+            <h2 className="eyebrow">Explore</h2>
             <ul className="mt-4 space-y-2">
               {navLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 rounded"
-                  >
+                  <Link href={href} className={externalLinkClass}>
                     {label}
                   </Link>
                 </li>
@@ -48,18 +50,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="font-display text-sm font-bold uppercase tracking-wider text-white">
-              Leagues & Shop
-            </h2>
+            <h2 className="eyebrow">Leagues & Shop</h2>
             <ul className="mt-4 space-y-2">
               <li>
                 <a
                   href={externalLinks.ellenbergerLeague}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 transition-colors hover:text-white"
+                  className={externalLinkClass}
                 >
                   Ellenberger League
+                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               </li>
               <li>
@@ -67,9 +68,10 @@ export function Footer() {
                   href={externalLinks.rooftopLeague}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 transition-colors hover:text-white"
+                  className={externalLinkClass}
                 >
                   Indy Rooftop League
+                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               </li>
               <li>
@@ -77,9 +79,10 @@ export function Footer() {
                   href={externalLinks.store}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 transition-colors hover:text-white"
+                  className={externalLinkClass}
                 >
                   Official IBHA Store
+                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               </li>
             </ul>
@@ -90,9 +93,7 @@ export function Footer() {
           <p className="text-xs text-white/40">
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
-          <p className="text-xs text-white/40">
-            Indianapolis, Indiana
-          </p>
+          <p className="text-xs text-white/40">Indianapolis, Indiana</p>
         </div>
       </div>
     </footer>

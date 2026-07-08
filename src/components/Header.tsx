@@ -40,10 +40,10 @@ export function Header() {
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
           scrolled
             ? "border-b border-white/10 bg-arena/90 backdrop-blur-xl shadow-lg shadow-black/20"
-            : "bg-transparent",
+            : "bg-arena/40 backdrop-blur-sm",
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-1.5 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 pb-1.5 pt-[max(0.375rem,env(safe-area-inset-top))] sm:px-8 sm:py-2.5 lg:px-12">
           <Link
             href="/"
             className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-arena rounded-lg"
@@ -75,7 +75,7 @@ export function Header() {
                   className={cn(
                     "rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400",
                     active
-                      ? "bg-white/10 text-white"
+                      ? "bg-rink-500/15 text-white ring-1 ring-rink-400/30"
                       : "text-white/70 hover:bg-white/5 hover:text-white",
                   )}
                   aria-current={active ? "page" : undefined}

@@ -4,13 +4,15 @@ import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { Timeline } from "@/components/Timeline";
 import { timelineEvents, communityPhotos } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "Learn about the Indiana Ball Hockey Association — our mission, Indianapolis hockey history, and vision for the future of ball hockey in Indiana.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -32,7 +34,7 @@ export default function AboutPage() {
               eyebrow="Mission"
               title="Indiana Ball Hockey Association"
             />
-            <div className="space-y-4 text-white/70 leading-relaxed">
+            <div className="space-y-4 prose-body">
               <p>
                 IBHA exists to grow ball hockey across Indiana by creating an
                 inclusive environment where players of all ages and skill levels
@@ -50,7 +52,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+          <div className="media-frame aspect-[4/3]">
             <Image
               src={communityPhotos.jerseyNavy.src}
               alt={communityPhotos.jerseyNavy.alt}
@@ -59,7 +61,7 @@ export default function AboutPage() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-arena/50 to-transparent" />
+            <div className="media-frame-overlay bg-gradient-to-t from-arena/50 to-transparent" />
           </div>
         </div>
       </Section>
@@ -76,7 +78,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <div className="grid gap-12 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3">
           <HistoryCard
             title="Indy Rooftop"
             description="Indianapolis's only rooftop hockey rink — a 60×40 ft deck born from Super Bowl Legacy funding and Pittsburgh hockey nostalgia. Home to fast 3-on-3 IRHL action for 50+ players."
@@ -103,7 +105,7 @@ export default function AboutPage() {
               title="What Comes Next"
               description="IBHA's focus is building ball hockey in Indiana — with bigger ambitions on the horizon."
             />
-            <div className="space-y-4 text-white/70 leading-relaxed">
+            <div className="space-y-4 prose-body">
               <p>
                 Withdrawing from managing an NBHL division opened the door to
                 expand our 5-on-5 league at Ellenberger Park. But summer
@@ -117,7 +119,7 @@ export default function AboutPage() {
                 roller derby, and more.
               </p>
             </div>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Button href="/contact#partners">Sponsor or Partner</Button>
               <Button href="/contact" variant="secondary">
                 Get in Touch
@@ -125,7 +127,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="space-y-6">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+            <div className="media-frame aspect-[4/3]">
               <Image
                 src={communityPhotos.rink.src}
                 alt={communityPhotos.rink.alt}
@@ -165,25 +167,27 @@ function HistoryCard({
   image: { src: string; alt: string };
 }) {
   return (
-    <div className="glass-card overflow-hidden transition-all hover:border-rink-400/30">
-      <div className="relative aspect-[16/10]">
+    <article className="glass-card-interactive group overflow-hidden">
+      <div className="media-frame aspect-[16/10]">
         <Image
           src={image.src}
           alt={image.alt}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 1024px) 100vw, 33vw"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-transparent to-transparent" />
+        <div className="media-frame-overlay bg-gradient-to-t from-arena-elevated via-transparent to-transparent" />
       </div>
       <div className="p-6">
         <h3 className="font-display text-lg font-bold uppercase text-rink-300">
           {title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-white/65">{description}</p>
+        <p className="mt-3 text-sm leading-relaxed text-white/65">
+          {description}
+        </p>
       </div>
-    </div>
+    </article>
   );
 }
 

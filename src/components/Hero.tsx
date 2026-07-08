@@ -10,6 +10,7 @@ interface HeroProps {
   image?: string;
   imageAlt?: string;
   compact?: boolean;
+  priority?: boolean;
 }
 
 export function Hero({
@@ -21,10 +22,15 @@ export function Hero({
   image = "/assets/hero-action.jpg",
   imageAlt = "Ball hockey action in Indiana",
   compact = false,
+  priority = false,
 }: HeroProps) {
   return (
     <section
-      className={`relative flex items-center overflow-hidden bg-arena ${compact ? "min-h-[50vh] pt-28" : "min-h-screen pt-24"}`}
+      className={`relative flex items-start overflow-hidden bg-arena sm:items-center ${
+        compact
+          ? "min-h-0 py-28 sm:min-h-[50vh]"
+          : "min-h-[100dvh] pt-24"
+      }`}
     >
       <div className="absolute inset-0 bg-rink-glow" aria-hidden="true" />
       <div className="absolute inset-0 bg-arena-lights" aria-hidden="true" />
@@ -35,7 +41,7 @@ export function Hero({
           src={image}
           alt={imageAlt}
           fill
-          priority
+          priority={priority}
           className="object-cover object-center opacity-40"
           sizes="100vw"
         />
@@ -45,7 +51,11 @@ export function Hero({
 
       <HeroRinkMarkings />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 pt-8 sm:px-8 lg:px-12">
+      <div
+        className={`relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 ${
+          compact ? "pb-12 pt-4" : "pb-16 pt-8 sm:pb-20"
+        }`}
+      >
         <div className="max-w-4xl animate-fade-up">
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
           <h1 className="headline-xl text-balance">{title}</h1>
@@ -54,7 +64,7 @@ export function Hero({
           </p>
 
           {(primaryCta || secondaryCta) && (
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               {primaryCta && (
                 <Button
                   href={primaryCta.href}
@@ -79,12 +89,20 @@ export function Hero({
         </div>
 
         {!compact && (
-          <div className="mt-16 hidden items-end justify-between border-t border-white/10 pt-8 lg:flex">
-            <StatPill label="Format" value="3v3 & 5v5" />
-            <StatPill label="Location" value="Indianapolis" />
-            <StatPill label="Skill Level" value="All Welcome" />
-            <StatPill label="Equipment" value="Run, Don't Skate" />
-          </div>
+          <>
+            <div className="mt-10 grid grid-cols-2 gap-3 lg:hidden">
+              <StatPill label="Format" value="3v3 & 5v5" />
+              <StatPill label="Location" value="Indianapolis" />
+              <StatPill label="Skill Level" value="All Welcome" />
+              <StatPill label="Equipment" value="Run, Don't Skate" />
+            </div>
+            <div className="mt-16 hidden items-end justify-between border-t border-white/10 pt-8 lg:flex">
+              <StatPill label="Format" value="3v3 & 5v5" />
+              <StatPill label="Location" value="Indianapolis" />
+              <StatPill label="Skill Level" value="All Welcome" />
+              <StatPill label="Equipment" value="Run, Don't Skate" />
+            </div>
+          </>
         )}
       </div>
     </section>
@@ -93,9 +111,11 @@ export function Hero({
 
 function StatPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="glass-card px-6 py-4">
+    <div className="glass-card px-4 py-3 sm:px-6 sm:py-4">
       <p className="text-xs uppercase tracking-widest text-rink-300">{label}</p>
-      <p className="mt-1 font-display text-lg font-bold uppercase">{value}</p>
+      <p className="mt-1 font-display text-sm font-bold uppercase sm:text-lg">
+        {value}
+      </p>
     </div>
   );
 }
@@ -103,18 +123,25 @@ function StatPill({ label, value }: { label: string; value: string }) {
 function HeroRinkMarkings() {
   return (
     <svg
-      className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 w-full opacity-20"
+      className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 w-full text-rink-300 opacity-20"
       viewBox="0 0 1440 120"
       preserveAspectRatio="none"
       aria-hidden="true"
     >
       <path
         d="M0 60 H1440"
-        stroke="#4da8f5"
+        stroke="currentColor"
         strokeWidth="2"
         strokeDasharray="20 10"
       />
-      <circle cx="720" cy="60" r="30" fill="none" stroke="#4da8f5" strokeWidth="2" />
+      <circle
+        cx="720"
+        cy="60"
+        r="30"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
     </svg>
   );
 }

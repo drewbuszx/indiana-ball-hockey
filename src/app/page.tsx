@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import {
   FeatureCard,
@@ -13,9 +14,17 @@ import {
   galleryPhotos,
   leagues,
   quickPaths,
+  siteConfig,
+  socialLinks,
   whyBallHockey,
 } from "@/lib/content";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: siteConfig.name,
+  description: siteConfig.description,
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
@@ -31,6 +40,7 @@ export default function HomePage() {
         }}
         image={communityPhotos.heroAction.src}
         imageAlt={communityPhotos.heroAction.alt}
+        priority
       />
 
       <Section dark={false}>
@@ -56,13 +66,13 @@ export default function HomePage() {
               title="What Is Ball Hockey?"
               description="Ball hockey — also called dek, floor, or street hockey — is hockey you play on foot. Same intensity. Same teamwork. No skates required."
             />
-            <p className="text-white/70 leading-relaxed">
+            <p className="prose-body">
               Players run instead of skate and use a ball instead of a puck. That
               makes the sport more accessible and far more affordable than ice
               hockey, while keeping the nonstop action and competitiveness that
               make hockey great.
             </p>
-            <p className="mt-4 text-white/70 leading-relaxed">
+            <p className="mt-4 prose-body">
               Ball hockey has its own pace, rules, and culture — and it&apos;s
               growing fast across the country. In Indiana, IBHA is at the center
               of that growth.
@@ -73,7 +83,7 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+          <div className="media-frame aspect-[4/3]">
             <Image
               src={communityPhotos.nbhlAction.src}
               alt={communityPhotos.nbhlAction.alt}
@@ -82,7 +92,7 @@ export default function HomePage() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-arena/60 to-transparent" />
+            <div className="media-frame-overlay bg-gradient-to-tr from-arena/60 to-transparent" />
           </div>
         </div>
       </Section>
@@ -101,7 +111,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <p className="text-white/60">Not sure where to start?</p>
+          <p className="prose-muted">Not sure where to start?</p>
           <Button href="/contact" variant="ghost" className="mt-4">
             Reach Out — We&apos;ll Help You Choose
           </Button>
@@ -125,7 +135,7 @@ export default function HomePage() {
 
       <Section dark={false}>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10">
+          <div className="media-frame aspect-[16/10]">
             <Image
               src={communityPhotos.rooftopRink.src}
               alt={communityPhotos.rooftopRink.alt}
@@ -134,6 +144,7 @@ export default function HomePage() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
+            <div className="media-frame-overlay" />
           </div>
           <div>
             <SectionHeader
@@ -141,13 +152,13 @@ export default function HomePage() {
               title="Built in Indianapolis. Growing Across Indiana."
               description="From a rooftop dream in 2011 to Ellenberger's upgraded rink and beyond — IBHA carries decades of Indy hockey history forward."
             />
-            <p className="text-white/70 leading-relaxed">
+            <p className="prose-body">
               What started as a Pittsburgh transplant&apos;s vision for rooftop
               dek hockey has evolved into a statewide association with two
               active leagues, a passionate player base, and ambitions for a
               permanent year-round home.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Button href="/about">Read Our History</Button>
               <Button href="/contact#partners" variant="secondary">
                 Partner With Us
@@ -167,21 +178,17 @@ export default function HomePage() {
         />
         <Gallery photos={galleryPhotos} />
         <div className="mt-10 text-center">
-          <Button
-            href="https://www.instagram.com/indianaballhockey"
-            external
-            variant="secondary"
-          >
+          <Button href={socialLinks.instagram} external variant="secondary">
             Follow on Instagram
           </Button>
         </div>
       </Section>
 
       <Section className="bg-gradient-to-b from-arena to-arena-surface">
-        <div className="glass-card mx-auto max-w-4xl p-8 text-center sm:p-12">
-          <p className="eyebrow mb-3">Stay Connected</p>
+        <div className="glass-card mx-auto max-w-4xl p-8 text-center ring-1 ring-white/10 sm:p-12">
+          <p className="eyebrow mb-3 text-gold">Stay Connected</p>
           <h2 className="headline-lg">Join the Conversation</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
+          <p className="mx-auto mt-4 max-w-xl prose-body">
             Follow IBHA for league updates, game highlights, and community news.
             Questions? We&apos;re always happy to help new players find their
             rink.
