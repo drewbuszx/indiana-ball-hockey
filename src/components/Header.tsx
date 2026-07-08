@@ -43,7 +43,7 @@ export function Header() {
             : "bg-transparent",
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-1.5 sm:px-8 lg:px-12">
           <Link
             href="/"
             className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-arena rounded-lg"
@@ -52,9 +52,9 @@ export function Header() {
             <Image
               src="/assets/logo.png"
               alt=""
-              width={120}
-              height={48}
-              className="h-10 w-auto transition-transform group-hover:scale-105 sm:h-12"
+              width={180}
+              height={72}
+              className="h-16 w-auto transition-transform group-hover:scale-105 sm:h-[72px]"
               priority
             />
           </Link>
