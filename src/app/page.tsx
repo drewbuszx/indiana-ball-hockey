@@ -29,8 +29,8 @@ export default function HomePage() {
           label: "What Is Ball Hockey?",
           href: "#what-is-ball-hockey",
         }}
-        image={communityPhotos.heroAction.src}
-        imageAlt={communityPhotos.heroAction.alt}
+        image={communityPhotos.rooftopKreezeeBg.src}
+        imageAlt={communityPhotos.rooftopKreezeeBg.alt}
       />
 
       <Section dark={false}>

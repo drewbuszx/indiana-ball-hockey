@@ -106,8 +106,8 @@ export const communityPhotos = {
     alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
   },
   rooftop: {
-    src: "/assets/rooftop-kreezee-bg.jpg",
-    alt: "Indy Rooftop Hockey League rink at dusk",
+    src: "/assets/roof.jpg",
+    alt: "Nighttime ball hockey action on the Indy rooftop rink",
   },
   rooftopRink: {
     src: "/assets/roof2.jpg",
@@ -132,6 +132,10 @@ export const communityPhotos = {
   heroAction: {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",
+  },
+  rooftopKreezeeBg: {
+    src: "/assets/rooftop-kreezee-bg.jpg",
+    alt: "Indy Rooftop Hockey League rink at dusk",
   },
   jerseyCream: {
     src: "/assets/community-jersey-cream.jpg",
