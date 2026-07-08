@@ -4,17 +4,18 @@ import {
   LeagueCard,
   QuickPathCard,
 } from "@/components/LeagueCard";
+import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { SocialLinks } from "@/components/SocialLinks";
 import {
+  galleryPhotos,
   leagues,
   quickPaths,
   siteConfig,
   whyBallHockey,
 } from "@/lib/content";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -151,6 +152,26 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
+        </div>
+      </Section>
+
+      <Section withRinkLines>
+        <SectionHeader
+          eyebrow="On the Rink"
+          title="From the Community"
+          description="Champions, jerseys, and game-day moments straight from @indianaballhockey."
+          align="center"
+          className="mx-auto"
+        />
+        <Gallery photos={galleryPhotos} />
+        <div className="mt-10 text-center">
+          <Button
+            href="https://www.instagram.com/indianaballhockey"
+            external
+            variant="secondary"
+          >
+            Follow on Instagram
+          </Button>
         </div>
       </Section>
 

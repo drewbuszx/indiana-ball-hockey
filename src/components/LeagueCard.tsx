@@ -45,12 +45,12 @@ export function LeagueCard({
           {badge}
         </span>
         {logo && (
-          <div className="absolute -bottom-8 right-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-white/15 bg-arena p-2 shadow-xl shadow-black/40 transition-transform duration-300 group-hover:scale-105 sm:right-8">
+          <div className="absolute -bottom-10 right-5 flex h-32 w-32 items-center justify-center rounded-2xl border border-white/20 bg-white p-3 shadow-2xl shadow-black/50 transition-transform duration-300 group-hover:scale-105 sm:right-8 sm:h-36 sm:w-36">
             <Image
               src={logo}
               alt={`${name} crest`}
-              width={96}
-              height={96}
+              width={144}
+              height={144}
               className="h-full w-full object-contain"
               loading="lazy"
             />
@@ -58,14 +58,14 @@ export function LeagueCard({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-8">
-        <div className="mb-3 flex flex-wrap gap-2 pr-20 text-xs uppercase tracking-wider text-rink-300">
+      <div className="flex flex-1 flex-col p-6 pt-8 sm:p-8">
+        <div className="mb-3 flex flex-wrap gap-2 pr-28 text-xs uppercase tracking-wider text-rink-300 sm:pr-32">
           <span>{format}</span>
           <span aria-hidden="true">·</span>
           <span>{surface}</span>
         </div>
 
-        <h3 className="font-display text-2xl font-bold uppercase leading-tight">
+        <h3 className="max-w-[70%] font-display text-2xl font-bold uppercase leading-tight">
           {name}
         </h3>
         <p className="mt-1 text-sm text-gold">{location}</p>

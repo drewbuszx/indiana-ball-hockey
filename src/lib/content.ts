@@ -123,6 +123,29 @@ export const leagues = [
   },
 ] as const;
 
+export const galleryPhotos = [
+  {
+    src: "/assets/community-champions.jpg",
+    alt: "The Hydra celebrate as 2026 Ellenberger Ball Hockey League champions",
+  },
+  {
+    src: "/assets/community-team.jpg",
+    alt: "IBHA team gathered on the rink for a group photo",
+  },
+  {
+    src: "/assets/community-jersey-cream.jpg",
+    alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
+  },
+  {
+    src: "/assets/community-trophies.jpg",
+    alt: "Championship trophies displayed on the ball hockey rink",
+  },
+  {
+    src: "/assets/community-jersey-navy.jpg",
+    alt: "Navy IBHA jersey featuring the orange mascot crest",
+  },
+] as const;
+
 export const timelineEvents = [
   {
     year: "2009",
