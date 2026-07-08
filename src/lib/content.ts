@@ -97,6 +97,10 @@ export const communityPhotos = {
     src: "/assets/community-team.jpg",
     alt: "IBHA team gathered on the rink for a group photo",
   },
+  rink: {
+    src: "/assets/rink.png",
+    alt: "Aerial view of the IBHA ball hockey rink at Ellenberger Park",
+  },
   jerseyCream: {
     src: "/assets/community-jersey-cream.jpg",
     alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",

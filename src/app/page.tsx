@@ -75,8 +75,8 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src={communityPhotos.team.src}
-              alt={communityPhotos.team.alt}
+              src={communityPhotos.rink.src}
+              alt={communityPhotos.rink.alt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
