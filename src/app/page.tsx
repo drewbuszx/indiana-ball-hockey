@@ -127,8 +127,8 @@ export default function HomePage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src={communityPhotos.trophies.src}
-              alt={communityPhotos.trophies.alt}
+              src={communityPhotos.rooftopRink.src}
+              alt={communityPhotos.rooftopRink.alt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

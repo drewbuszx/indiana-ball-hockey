@@ -109,6 +109,10 @@ export const communityPhotos = {
     src: "/assets/roof.jpg",
     alt: "Nighttime ball hockey action on the Indy rooftop rink",
   },
+  rooftopRink: {
+    src: "/assets/roof2.jpg",
+    alt: "Aerial view of the Indy rooftop ball hockey rink with city skyline",
+  },
   tailgate: {
     src: "/assets/tailgate.jpg",
     alt: "IBHA players tailgating before a ball hockey game",
