@@ -142,8 +142,8 @@ export const communityPhotos = {
     alt: "Ball hockey action at Ellenberger Park",
   },
   historyNbhl: {
-    src: "/assets/rbow.jpg",
-    alt: "Indiana Ball Hockey Association pride logo",
+    src: "/assets/nbhl.png",
+    alt: "Indiana celebrates 2024 NBHL Division Championship",
   },
   heroAction: {
     src: "/assets/hero-action.jpg",
