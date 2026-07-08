@@ -80,17 +80,17 @@ export default function AboutPage() {
           <HistoryCard
             title="Indy Rooftop"
             description="Indianapolis's only rooftop hockey rink — a 60×40 ft deck born from Super Bowl Legacy funding and Pittsburgh hockey nostalgia. Home to fast 3-on-3 IRHL action for 50+ players."
-            image={communityPhotos.team}
+            image={communityPhotos.historyRooftop}
           />
           <HistoryCard
             title="Ellenberger Park"
             description="A 42-acre Irvington landmark with a hockey history dating to the 1960s. After years dormant, upgraded Sport Court flooring and lighting made it IBHA's 5-on-5 home."
-            image={communityPhotos.champions}
+            image={communityPhotos.historyEllenberger}
           />
           <HistoryCard
             title="NBHL Chapter"
             description="Indiana competed two seasons in the National Ball Hockey League before refocusing on local growth. The NBHL relationship remains strong for players seeking national-level competition."
-            image={communityPhotos.trophies}
+            image={communityPhotos.historyNbhl}
           />
         </div>
       </Section>
