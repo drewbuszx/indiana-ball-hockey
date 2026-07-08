@@ -105,6 +105,10 @@ export const communityPhotos = {
     src: "/assets/white.jpg",
     alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
   },
+  rooftop: {
+    src: "/assets/roof.jpg",
+    alt: "Nighttime ball hockey action on the Indy rooftop rink",
+  },
   heroAction: {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",
@@ -159,8 +163,8 @@ export const leagues = [
     audience:
       "Players who want fast, high-tempo games in a unique urban setting.",
     href: externalLinks.rooftopLeague,
-    image: communityPhotos.team.src,
-    imageAlt: communityPhotos.team.alt,
+    image: communityPhotos.rooftop.src,
+    imageAlt: communityPhotos.rooftop.alt,
     logo: "/assets/rooftop-logo.png",
     logoTile: "dark",
     badge: "3v3",
