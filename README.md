@@ -18,6 +18,14 @@ npm run build
 npm start
 ```
 
+Static export outputs to `out/` for Cloudflare Pages.
+
+## Deployment
+
+**Live preview:** https://indiana-ball-hockey.pages.dev
+
+Full GitHub + Cloudflare + custom domain instructions: [`docs/deployment.md`](docs/deployment.md)
+
 ## Documentation
 
 - [`docs/ibha-source-inventory.md`](docs/ibha-source-inventory.md) — Content and assets extracted from the original site
