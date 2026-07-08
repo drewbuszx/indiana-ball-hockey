@@ -217,8 +217,8 @@ export const communityPhotos = {
 
 export const galleryPhotos = [
   communityPhotos.snug1,
+  communityPhotos.snug2,
   communityPhotos.rbow,
-  communityPhotos.orange,
   communityPhotos.tailgate,
   communityPhotos.gang,
 ] as const;
