@@ -134,12 +134,12 @@ export const communityPhotos = {
     alt: "Ellenberger Ball Hockey Club team celebration",
   },
   historyRooftop: {
-    src: "/assets/ellen2.png",
-    alt: "Ball hockey action at Ellenberger Park",
-  },
-  historyEllenberger: {
     src: "/assets/rooff.jpg",
     alt: "Indy Rooftop Hockey League team celebration",
+  },
+  historyEllenberger: {
+    src: "/assets/ellen2.png",
+    alt: "Ball hockey action at Ellenberger Park",
   },
   historyNbhl: {
     src: "/assets/rbow.jpg",
