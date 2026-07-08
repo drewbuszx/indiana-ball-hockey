@@ -70,7 +70,7 @@ export default function LeaguesPage() {
       <Section>
         <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
           {[
-            communityPhotos.champions,
+            communityPhotos.rooftopKreezeeBg,
             communityPhotos.team,
             communityPhotos.trophies,
           ].map((photo) => (
