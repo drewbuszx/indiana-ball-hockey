@@ -29,8 +29,8 @@ export default function HomePage() {
           label: "What Is Ball Hockey?",
           href: "#what-is-ball-hockey",
         }}
-        image={communityPhotos.champions.src}
-        imageAlt={communityPhotos.champions.alt}
+        image={communityPhotos.heroAction.src}
+        imageAlt={communityPhotos.heroAction.alt}
       />
 
       <Section dark={false}>
@@ -75,8 +75,8 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src={communityPhotos.rink.src}
-              alt={communityPhotos.rink.alt}
+              src={communityPhotos.whiteJersey.src}
+              alt={communityPhotos.whiteJersey.alt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

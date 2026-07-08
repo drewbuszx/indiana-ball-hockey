@@ -101,6 +101,14 @@ export const communityPhotos = {
     src: "/assets/rink.png",
     alt: "Aerial view of the IBHA ball hockey rink at Ellenberger Park",
   },
+  whiteJersey: {
+    src: "/assets/white.jpg",
+    alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
+  },
+  heroAction: {
+    src: "/assets/hero-action.jpg",
+    alt: "Ball hockey action at Ellenberger Park",
+  },
   jerseyCream: {
     src: "/assets/community-jersey-cream.jpg",
     alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
