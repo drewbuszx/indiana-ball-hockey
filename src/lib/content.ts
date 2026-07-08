@@ -106,8 +106,8 @@ export const communityPhotos = {
     alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
   },
   rooftop: {
-    src: "/assets/roof.jpg",
-    alt: "Nighttime ball hockey action on the Indy rooftop rink",
+    src: "/assets/rooftop-kreezee-bg.jpg",
+    alt: "Indy Rooftop Hockey League rink at dusk",
   },
   rooftopRink: {
     src: "/assets/roof2.jpg",
