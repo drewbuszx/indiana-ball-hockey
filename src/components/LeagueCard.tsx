@@ -33,7 +33,7 @@ export function LeagueCard({
 }: LeagueCardProps) {
   const logoTileClass =
     logoTile === "dark"
-      ? "border-white/15 bg-black p-2"
+      ? "border-white/15 bg-black p-3"
       : "border-white/20 bg-white p-3";
 
   return (
