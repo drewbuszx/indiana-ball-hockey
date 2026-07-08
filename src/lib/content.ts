@@ -150,6 +150,7 @@ export const leagues = [
     image: communityPhotos.team.src,
     imageAlt: communityPhotos.team.alt,
     logo: "/assets/rooftop-logo.png",
+    logoTile: "dark",
     badge: "3v3",
   },
 ] as const;

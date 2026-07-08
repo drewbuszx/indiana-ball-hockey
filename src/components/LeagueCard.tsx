@@ -13,6 +13,7 @@ interface LeagueCardProps {
   image: string;
   imageAlt: string;
   logo?: string;
+  logoTile?: "light" | "dark";
   badge: string;
 }
 
@@ -27,8 +28,14 @@ export function LeagueCard({
   image,
   imageAlt,
   logo,
+  logoTile = "light",
   badge,
 }: LeagueCardProps) {
+  const logoTileClass =
+    logoTile === "dark"
+      ? "border-white/15 bg-black p-2"
+      : "border-white/20 bg-white p-3";
+
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated transition-all duration-300 hover:border-rink-400/40 hover:shadow-2xl hover:shadow-rink-500/10 hover:-translate-y-1">
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -45,7 +52,9 @@ export function LeagueCard({
           {badge}
         </span>
         {logo && (
-          <div className="absolute -bottom-10 right-5 flex h-32 w-32 items-center justify-center rounded-2xl border border-white/20 bg-white p-3 shadow-2xl shadow-black/50 transition-transform duration-300 group-hover:scale-105 sm:right-8 sm:h-36 sm:w-36">
+          <div
+            className={`absolute -bottom-10 right-5 flex h-32 w-32 items-center justify-center rounded-2xl border shadow-2xl shadow-black/50 transition-transform duration-300 group-hover:scale-105 sm:right-8 sm:h-36 sm:w-36 ${logoTileClass}`}
+          >
             <Image
               src={logo}
               alt={`${name} crest`}
