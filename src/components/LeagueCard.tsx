@@ -13,7 +13,7 @@ interface LeagueCardProps {
   image: string;
   imageAlt: string;
   logo?: string;
-  logoTile?: "light" | "dark";
+  logoTile?: "light" | "dark" | "none";
   badge: string;
 }
 
@@ -31,44 +31,57 @@ export function LeagueCard({
   logoTile = "light",
   badge,
 }: LeagueCardProps) {
+  const isTransparentLogo = logoTile === "none";
   const logoTileClass =
     logoTile === "dark"
-      ? "border-white/15 bg-black p-3"
-      : "border-white/20 bg-white p-3";
+      ? "border border-white/15 bg-black p-3 shadow-2xl shadow-black/50"
+      : logoTile === "none"
+        ? "drop-shadow-[0_8px_20px_rgba(0,0,0,0.55)]"
+        : "border border-white/20 bg-white p-3 shadow-2xl shadow-black/50";
+  const logoSizeClass = isTransparentLogo
+    ? "h-[10.4rem] w-[10.4rem] sm:h-[11.7rem] sm:w-[11.7rem]"
+    : "h-32 w-32 sm:h-36 sm:w-36";
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated transition-all duration-300 hover:border-rink-400/40 hover:shadow-2xl hover:shadow-rink-500/10 hover:-translate-y-1">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-arena-elevated/20 to-transparent" />
-        <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-wider text-arena">
-          {badge}
-        </span>
+      <div className="relative">
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-arena-elevated/20 to-transparent" />
+          <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-wider text-arena">
+            {badge}
+          </span>
+        </div>
         {logo && (
           <div
-            className={`absolute -bottom-10 right-5 flex h-32 w-32 items-center justify-center rounded-2xl border shadow-2xl shadow-black/50 transition-transform duration-300 group-hover:scale-105 sm:right-8 sm:h-36 sm:w-36 ${logoTileClass}`}
+            className={`absolute -bottom-10 right-5 z-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 sm:-bottom-12 sm:right-8 ${isTransparentLogo ? "rounded-none" : "rounded-2xl"} ${logoSizeClass} ${logoTileClass}`}
           >
             <Image
               src={logo}
               alt={`${name} crest`}
-              width={144}
-              height={144}
+              width={isTransparentLogo ? 187 : 144}
+              height={isTransparentLogo ? 187 : 144}
               className="h-full w-full object-contain"
+              sizes="(max-width: 640px) 166px, 187px"
               loading="lazy"
             />
           </div>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-6 pt-8 sm:p-8">
-        <div className="mb-3 flex flex-wrap gap-2 pr-28 text-xs uppercase tracking-wider text-rink-300 sm:pr-32">
+      <div className="flex flex-1 flex-col p-6 pt-10 sm:p-8 sm:pt-12">
+        <div
+          className={`mb-3 flex flex-wrap gap-2 text-xs uppercase tracking-wider text-rink-300 ${
+            isTransparentLogo ? "pr-36 sm:pr-44" : "pr-28 sm:pr-32"
+          }`}
+        >
           <span>{format}</span>
           <span aria-hidden="true">·</span>
           <span>{surface}</span>

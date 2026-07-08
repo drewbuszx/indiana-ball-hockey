@@ -97,8 +97,8 @@ export default function ContactPage() {
                 fill
                 className={
                   photo.fit === "contain"
-                    ? "object-contain p-4"
-                    : "object-cover"
+                    ? "object-contain p-3 sm:p-4"
+                    : "object-cover object-center"
                 }
                 sizes="(max-width: 640px) 50vw, 25vw"
                 loading="lazy"

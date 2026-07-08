@@ -134,7 +134,7 @@ export const communityPhotos = {
     alt: "Rooftop league champions celebrating with the can trophy",
   },
   rbow: {
-    src: "/assets/rbow.jpg",
+    src: "/assets/rbow.png",
     alt: "IBHA rainbow pride logo",
   },
   ellenberger: {
@@ -218,7 +218,7 @@ export const communityPhotos = {
 export const galleryPhotos = [
   communityPhotos.snug1,
   communityPhotos.snug2,
-  communityPhotos.rbow,
+  { ...communityPhotos.rbow, fit: "contain" as const },
   communityPhotos.tailgate,
   communityPhotos.gang,
 ] as const;
@@ -253,6 +253,7 @@ export const leagues = [
     image: communityPhotos.ellenberger.src,
     imageAlt: communityPhotos.ellenberger.alt,
     logo: "/assets/ellenberger-logo.png",
+    logoTile: "none",
     badge: "5v5",
   },
   {
@@ -269,7 +270,7 @@ export const leagues = [
     image: communityPhotos.rooftop.src,
     imageAlt: communityPhotos.rooftop.alt,
     logo: "/assets/rooftop-logo.png",
-    logoTile: "dark",
+    logoTile: "none",
     badge: "3v3",
   },
 ] as const;

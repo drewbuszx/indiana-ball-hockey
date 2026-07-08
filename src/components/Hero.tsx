@@ -36,7 +36,7 @@ export function Hero({
           alt={imageAlt}
           fill
           priority
-          className="object-cover opacity-40"
+          className="object-cover object-center opacity-40"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-arena via-arena/80 to-arena/40" />
