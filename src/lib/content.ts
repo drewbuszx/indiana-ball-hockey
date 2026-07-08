@@ -109,6 +109,18 @@ export const communityPhotos = {
     src: "/assets/roof.jpg",
     alt: "Nighttime ball hockey action on the Indy rooftop rink",
   },
+  tailgate: {
+    src: "/assets/tailgate.jpg",
+    alt: "IBHA players tailgating before a ball hockey game",
+  },
+  orange: {
+    src: "/assets/orange.jpg",
+    alt: "Rooftop league champions celebrating with the trophy",
+  },
+  gang: {
+    src: "/assets/gang.jpg",
+    alt: "IBHA players posing together on the rink",
+  },
   heroAction: {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",
@@ -130,9 +142,9 @@ export const communityPhotos = {
 export const galleryPhotos = [
   communityPhotos.champions,
   communityPhotos.team,
-  communityPhotos.jerseyCream,
-  communityPhotos.trophies,
-  communityPhotos.jerseyNavy,
+  communityPhotos.orange,
+  communityPhotos.tailgate,
+  communityPhotos.gang,
 ] as const;
 
 export const leagues = [
