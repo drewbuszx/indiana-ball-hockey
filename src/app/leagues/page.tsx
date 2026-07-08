@@ -22,8 +22,8 @@ export default function LeaguesPage() {
         title="Find Your League"
         subtitle="Two distinct experiences in Indianapolis — full-size 5-on-5 competition at Ellenberger Park and lightning-fast 3-on-3 on the city's only rooftop rink."
         primaryCta={{ label: "Not Sure? Contact Us", href: "/contact" }}
-        image={communityPhotos.champions.src}
-        imageAlt={communityPhotos.champions.alt}
+        image={communityPhotos.leaguesHero.src}
+        imageAlt={communityPhotos.leaguesHero.alt}
       />
 
       <Section>
@@ -78,8 +78,8 @@ export default function LeaguesPage() {
       <Section>
         <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
           {[
-            communityPhotos.rooftopKreezeeBg,
             communityPhotos.ellen3,
+            communityPhotos.rooftopKreezeeBg,
             communityPhotos.orange,
           ].map((photo) => (
             <div

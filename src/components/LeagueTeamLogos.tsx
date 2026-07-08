@@ -14,12 +14,12 @@ export function LeagueTeamLogos({ title, logos }: LeagueTeamLogosProps) {
       <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
         {logos.map((logo) => (
           <li key={logo.src}>
-            <div className="relative h-20 w-20 rounded-xl bg-black/50 p-2.5 sm:h-24 sm:w-24 sm:p-3">
+            <div className="relative h-20 w-20 p-2.5 sm:h-24 sm:w-24 sm:p-3">
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 fill
-                className="object-contain p-1"
+                className="object-contain"
                 sizes="96px"
                 loading="lazy"
               />

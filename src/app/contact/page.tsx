@@ -3,7 +3,7 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { SocialLinks } from "@/components/SocialLinks";
-import { externalLinks, communityPhotos } from "@/lib/content";
+import { externalLinks, communityPhotos, contactConnectPhotos } from "@/lib/content";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -86,21 +86,20 @@ export default function ContactPage() {
           </Button>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {[
-            communityPhotos.champions,
-            communityPhotos.trophies,
-            communityPhotos.jerseyNavy,
-            communityPhotos.jerseyCream,
-          ].map((photo) => (
+          {contactConnectPhotos.map((photo) => (
             <div
               key={photo.src}
-              className="relative aspect-square overflow-hidden rounded-xl border border-white/10"
+              className="relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-arena-elevated"
             >
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                className="object-cover"
+                className={
+                  photo.fit === "contain"
+                    ? "object-contain p-4"
+                    : "object-cover"
+                }
                 sizes="(max-width: 640px) 50vw, 25vw"
                 loading="lazy"
               />

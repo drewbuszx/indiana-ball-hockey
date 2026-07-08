@@ -21,8 +21,8 @@ export default function AboutPage() {
         title="Growing the Game at Home"
         subtitle="The Indiana Ball Hockey Association is the home for competitive and recreational ball hockey in Indiana — inclusive, community-driven, and built for every skill level."
         primaryCta={{ label: "Join a League", href: "/leagues" }}
-        image={communityPhotos.heroAction.src}
-        imageAlt={communityPhotos.heroAction.alt}
+        image={communityPhotos.aboutHero.src}
+        imageAlt={communityPhotos.aboutHero.alt}
       />
 
       <Section>

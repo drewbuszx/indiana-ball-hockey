@@ -135,7 +135,7 @@ export const communityPhotos = {
   },
   rbow: {
     src: "/assets/rbow.jpg",
-    alt: "2026 Ellenberger Ball Hockey League champions, The Hydra",
+    alt: "IBHA rainbow pride logo",
   },
   ellenberger: {
     src: "/assets/ellen.png",
@@ -161,6 +161,14 @@ export const communityPhotos = {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",
   },
+  aboutHero: {
+    src: "/assets/hocksy.png",
+    alt: "Ball hockey players competing on the rink",
+  },
+  leaguesHero: {
+    src: "/assets/hawky.png",
+    alt: "IBHA players gathered on the rink",
+  },
   nbhlAction: {
     src: "/assets/nbhl-action.jpg",
     alt: "Ball hockey players competing at Ellenberger Park",
@@ -181,13 +189,21 @@ export const communityPhotos = {
     src: "/assets/community-jersey-navy.jpg",
     alt: "Navy IBHA jersey featuring the orange mascot crest",
   },
+  ball: {
+    src: "/assets/ball.png",
+    alt: "IBHA-branded ball hockey ball on the rink",
+  },
   storeHero: {
     src: "/assets/store-hero.png",
     alt: "Navy IBHA jersey with orange mascot crest and number 15",
   },
+  storeHeroBg: {
+    src: "/assets/store-hero-bg.png",
+    alt: "IBHA team apparel and jerseys",
+  },
   storeSuggly: {
-    src: "/assets/store-suggly.png",
-    alt: "Navy IBHA team apparel jersey",
+    src: "/assets/store-snerg.png",
+    alt: "Custom IBHA team jersey with shamrock crest",
   },
   storeJersey1: {
     src: "/assets/store-1.png",
@@ -200,11 +216,26 @@ export const communityPhotos = {
 } as const;
 
 export const galleryPhotos = [
+  communityPhotos.snug1,
   communityPhotos.rbow,
-  communityPhotos.snug2,
   communityPhotos.orange,
   communityPhotos.tailgate,
   communityPhotos.gang,
+] as const;
+
+export const contactConnectPhotos = [
+  { ...communityPhotos.ball, fit: "cover" as const },
+  {
+    src: "/assets/ellenberger-logo.png",
+    alt: "Ellenberger Ball Hockey League crest",
+    fit: "contain" as const,
+  },
+  {
+    src: "/assets/rooftop-logo.png",
+    alt: "Indy Rooftop Hockey League crest",
+    fit: "contain" as const,
+  },
+  { ...communityPhotos.jerseyNavy, fit: "cover" as const },
 ] as const;
 
 export const leagues = [

@@ -42,8 +42,8 @@ export default function StorePage() {
           href: externalLinks.store,
           external: true,
         }}
-        image={communityPhotos.jerseyCream.src}
-        imageAlt={communityPhotos.jerseyCream.alt}
+        image={communityPhotos.storeHeroBg.src}
+        imageAlt={communityPhotos.storeHeroBg.alt}
       />
 
       <Section>
