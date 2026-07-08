@@ -125,6 +125,18 @@ export const communityPhotos = {
     src: "/assets/gang.jpg",
     alt: "IBHA players posing together on the rink",
   },
+  snug1: {
+    src: "/assets/snug1.jpg",
+    alt: "IBHA team gathered on the rink for a group photo",
+  },
+  snug2: {
+    src: "/assets/snug2.jpg",
+    alt: "Rooftop league champions celebrating with the can trophy",
+  },
+  rbow: {
+    src: "/assets/rbow.jpg",
+    alt: "2026 Ellenberger Ball Hockey League champions, The Hydra",
+  },
   ellenberger: {
     src: "/assets/ellen.png",
     alt: "Ball hockey action at Ellenberger Park",
@@ -169,11 +181,27 @@ export const communityPhotos = {
     src: "/assets/community-jersey-navy.jpg",
     alt: "Navy IBHA jersey featuring the orange mascot crest",
   },
+  storeHero: {
+    src: "/assets/store-hero.png",
+    alt: "Navy IBHA jersey with orange mascot crest and number 15",
+  },
+  storeSuggly: {
+    src: "/assets/store-suggly.png",
+    alt: "Navy IBHA team apparel jersey",
+  },
+  storeJersey1: {
+    src: "/assets/store-1.png",
+    alt: "Cream Indiana Ball Hockey jersey with cursive Indiana lettering",
+  },
+  storeJersey3: {
+    src: "/assets/store-3.png",
+    alt: "IBHA champions team photo with championship graphic",
+  },
 } as const;
 
 export const galleryPhotos = [
-  communityPhotos.champions,
-  communityPhotos.team,
+  communityPhotos.rbow,
+  communityPhotos.snug2,
   communityPhotos.orange,
   communityPhotos.tailgate,
   communityPhotos.gang,
@@ -214,6 +242,39 @@ export const leagues = [
     badge: "3v3",
   },
 ] as const;
+
+export const leagueTeamLogos = {
+  ellenberger: {
+    title: "Ellenberger Ball Hockey League",
+    logos: [
+      { src: "/assets/teams/ellenberger/the-hydra.png", alt: "The Hydra" },
+      { src: "/assets/teams/ellenberger/indy-heist.png", alt: "Indy Heist" },
+      {
+        src: "/assets/teams/ellenberger/midwest-blizzard.png",
+        alt: "Midwest Blizzard",
+      },
+      { src: "/assets/teams/ellenberger/corn-kings.png", alt: "Corn Kings" },
+    ],
+  },
+  rooftop: {
+    title: "Indy Rooftop Hockey League",
+    logos: [
+      { src: "/assets/teams/rooftop/osha.png", alt: "OSHA" },
+      {
+        src: "/assets/teams/rooftop/englewood-woodsmen.png",
+        alt: "Englewood Woodsmen",
+      },
+      { src: "/assets/teams/rooftop/indy-heist.png", alt: "Indy Heist" },
+      {
+        src: "/assets/teams/rooftop/midwest-blizzard.png",
+        alt: "Midwest Blizzard",
+      },
+      { src: "/assets/teams/rooftop/mammoths.png", alt: "Mammoths" },
+      { src: "/assets/teams/rooftop/swamp-donkeys.png", alt: "Swamp Donkeys" },
+      { src: "/assets/teams/rooftop/wolfpack.png", alt: "Laser Wolves" },
+    ],
+  },
+} as const;
 
 export const timelineEvents = [
   {

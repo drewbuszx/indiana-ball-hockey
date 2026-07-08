@@ -15,17 +15,17 @@ const products = [
   {
     title: "Team Apparel",
     description: "Jerseys, hoodies, and team-specific gear for IBHA leagues.",
-    image: communityPhotos.jerseyNavy,
+    image: communityPhotos.storeSuggly,
   },
   {
     title: "League Swag",
     description: "Show your Ellenberger or Rooftop pride with official league merchandise.",
-    image: communityPhotos.jerseyCream,
+    image: communityPhotos.storeJersey1,
   },
   {
     title: "IBHA Brand Gear",
     description: "Association-branded apparel for players, fans, and supporters.",
-    image: communityPhotos.champions,
+    image: communityPhotos.storeJersey3,
   },
 ] as const;
 
@@ -50,8 +50,8 @@ export default function StorePage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative aspect-square max-w-md overflow-hidden rounded-2xl border border-white/10 mx-auto lg:mx-0">
             <Image
-              src={communityPhotos.jerseyNavy.src}
-              alt={communityPhotos.jerseyNavy.alt}
+              src={communityPhotos.storeHero.src}
+              alt={communityPhotos.storeHero.alt}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 400px"

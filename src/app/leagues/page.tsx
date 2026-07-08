@@ -3,8 +3,9 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { LeagueCard } from "@/components/LeagueCard";
 import { Section, SectionHeader } from "@/components/Section";
-import { leagues, communityPhotos } from "@/lib/content";
+import { leagues, communityPhotos, leagueTeamLogos } from "@/lib/content";
 import Image from "next/image";
+import { LeagueTeamLogos } from "@/components/LeagueTeamLogos";
 
 export const metadata: Metadata = {
   title: "Leagues",
@@ -34,6 +35,13 @@ export default function LeaguesPage() {
       </Section>
 
       <Section dark={false}>
+        <div className="mx-auto max-w-4xl space-y-12">
+          <LeagueTeamLogos {...leagueTeamLogos.ellenberger} />
+          <LeagueTeamLogos {...leagueTeamLogos.rooftop} />
+        </div>
+      </Section>
+
+      <Section>
         <SectionHeader
           eyebrow="Compare"
           title="Which League Is Right for You?"
