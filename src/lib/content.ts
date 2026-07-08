@@ -102,6 +102,7 @@ export const leagues = [
     href: externalLinks.ellenbergerLeague,
     image: "/assets/nbhl-action.jpg",
     imageAlt: "Ball hockey action at Ellenberger Park",
+    logo: "/assets/ellenberger-logo.png",
     badge: "5v5",
   },
   {
@@ -117,6 +118,7 @@ export const leagues = [
     href: externalLinks.rooftopLeague,
     image: "/assets/hero-action.jpg",
     imageAlt: "Fast-paced rooftop ball hockey action",
+    logo: "/assets/rooftop-logo.png",
     badge: "3v3",
   },
 ] as const;

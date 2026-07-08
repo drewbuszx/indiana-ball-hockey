@@ -12,6 +12,7 @@ interface LeagueCardProps {
   href: string;
   image: string;
   imageAlt: string;
+  logo?: string;
   badge: string;
 }
 
@@ -25,6 +26,7 @@ export function LeagueCard({
   href,
   image,
   imageAlt,
+  logo,
   badge,
 }: LeagueCardProps) {
   return (
@@ -38,14 +40,26 @@ export function LeagueCard({
           sizes="(max-width: 768px) 100vw, 50vw"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-arena-elevated/20 to-transparent" />
         <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-wider text-arena">
           {badge}
         </span>
+        {logo && (
+          <div className="absolute -bottom-8 right-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-white/15 bg-arena p-2 shadow-xl shadow-black/40 transition-transform duration-300 group-hover:scale-105 sm:right-8">
+            <Image
+              src={logo}
+              alt={`${name} crest`}
+              width={96}
+              height={96}
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6 sm:p-8">
-        <div className="mb-3 flex flex-wrap gap-2 text-xs uppercase tracking-wider text-rink-300">
+        <div className="mb-3 flex flex-wrap gap-2 pr-20 text-xs uppercase tracking-wider text-rink-300">
           <span>{format}</span>
           <span aria-hidden="true">·</span>
           <span>{surface}</span>
