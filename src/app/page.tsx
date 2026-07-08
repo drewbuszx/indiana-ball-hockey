@@ -9,10 +9,10 @@ import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { SocialLinks } from "@/components/SocialLinks";
 import {
+  communityPhotos,
   galleryPhotos,
   leagues,
   quickPaths,
-  siteConfig,
   whyBallHockey,
 } from "@/lib/content";
 import Image from "next/image";
@@ -29,6 +29,8 @@ export default function HomePage() {
           label: "What Is Ball Hockey?",
           href: "#what-is-ball-hockey",
         }}
+        image={communityPhotos.champions.src}
+        imageAlt={communityPhotos.champions.alt}
       />
 
       <Section dark={false}>
@@ -73,8 +75,8 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src="/assets/hero-action.jpg"
-              alt="Competitive ball hockey game in Indiana"
+              src={communityPhotos.team.src}
+              alt={communityPhotos.team.alt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -125,8 +127,8 @@ export default function HomePage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src="/assets/nbhl-action.jpg"
-              alt="Ball hockey players competing at Ellenberger Park"
+              src={communityPhotos.trophies.src}
+              alt={communityPhotos.trophies.alt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

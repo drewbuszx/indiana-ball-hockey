@@ -88,6 +88,37 @@ export const quickPaths = [
   },
 ] as const;
 
+export const communityPhotos = {
+  champions: {
+    src: "/assets/community-champions.jpg",
+    alt: "The Hydra celebrate as 2026 Ellenberger Ball Hockey League champions",
+  },
+  team: {
+    src: "/assets/community-team.jpg",
+    alt: "IBHA team gathered on the rink for a group photo",
+  },
+  jerseyCream: {
+    src: "/assets/community-jersey-cream.jpg",
+    alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
+  },
+  trophies: {
+    src: "/assets/community-trophies.jpg",
+    alt: "Championship trophies displayed on the ball hockey rink",
+  },
+  jerseyNavy: {
+    src: "/assets/community-jersey-navy.jpg",
+    alt: "Navy IBHA jersey featuring the orange mascot crest",
+  },
+} as const;
+
+export const galleryPhotos = [
+  communityPhotos.champions,
+  communityPhotos.team,
+  communityPhotos.jerseyCream,
+  communityPhotos.trophies,
+  communityPhotos.jerseyNavy,
+] as const;
+
 export const leagues = [
   {
     id: "ellenberger",
@@ -100,8 +131,8 @@ export const leagues = [
     audience:
       "Competitive and recreational adult players ready for standard-format hockey.",
     href: externalLinks.ellenbergerLeague,
-    image: "/assets/nbhl-action.jpg",
-    imageAlt: "Ball hockey action at Ellenberger Park",
+    image: communityPhotos.champions.src,
+    imageAlt: communityPhotos.champions.alt,
     logo: "/assets/ellenberger-logo.png",
     badge: "5v5",
   },
@@ -116,33 +147,10 @@ export const leagues = [
     audience:
       "Players who want fast, high-tempo games in a unique urban setting.",
     href: externalLinks.rooftopLeague,
-    image: "/assets/hero-action.jpg",
-    imageAlt: "Fast-paced rooftop ball hockey action",
+    image: communityPhotos.team.src,
+    imageAlt: communityPhotos.team.alt,
     logo: "/assets/rooftop-logo.png",
     badge: "3v3",
-  },
-] as const;
-
-export const galleryPhotos = [
-  {
-    src: "/assets/community-champions.jpg",
-    alt: "The Hydra celebrate as 2026 Ellenberger Ball Hockey League champions",
-  },
-  {
-    src: "/assets/community-team.jpg",
-    alt: "IBHA team gathered on the rink for a group photo",
-  },
-  {
-    src: "/assets/community-jersey-cream.jpg",
-    alt: "Cream Indiana Ball Hockey jersey with orange and navy accents",
-  },
-  {
-    src: "/assets/community-trophies.jpg",
-    alt: "Championship trophies displayed on the ball hockey rink",
-  },
-  {
-    src: "/assets/community-jersey-navy.jpg",
-    alt: "Navy IBHA jersey featuring the orange mascot crest",
   },
 ] as const;
 

@@ -3,7 +3,8 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { LeagueCard } from "@/components/LeagueCard";
 import { Section, SectionHeader } from "@/components/Section";
-import { leagues } from "@/lib/content";
+import { leagues, communityPhotos } from "@/lib/content";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Leagues",
@@ -20,8 +21,8 @@ export default function LeaguesPage() {
         title="Find Your League"
         subtitle="Two distinct experiences in Indianapolis — full-size 5-on-5 competition at Ellenberger Park and lightning-fast 3-on-3 on the city's only rooftop rink."
         primaryCta={{ label: "Not Sure? Contact Us", href: "/contact" }}
-        image="/assets/hero-action.jpg"
-        imageAlt="Ball hockey league action"
+        image={communityPhotos.champions.src}
+        imageAlt={communityPhotos.champions.alt}
       />
 
       <Section>
@@ -63,6 +64,30 @@ export default function LeaguesPage() {
               <CompareRow label="Best For" a="Competitive & rec adults" b="High-tempo 3v3 players" />
             </tbody>
           </table>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+          {[
+            communityPhotos.champions,
+            communityPhotos.team,
+            communityPhotos.trophies,
+          ].map((photo) => (
+            <div
+              key={photo.src}
+              className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/10"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 33vw"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </Section>
 

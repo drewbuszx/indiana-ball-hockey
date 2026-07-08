@@ -3,7 +3,7 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { Timeline } from "@/components/Timeline";
-import { timelineEvents } from "@/lib/content";
+import { timelineEvents, communityPhotos } from "@/lib/content";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -21,8 +21,8 @@ export default function AboutPage() {
         title="Growing the Game at Home"
         subtitle="The Indiana Ball Hockey Association is the home for competitive and recreational ball hockey in Indiana — inclusive, community-driven, and built for every skill level."
         primaryCta={{ label: "Join a League", href: "/leagues" }}
-        image="/assets/nbhl-action.jpg"
-        imageAlt="Ball hockey action at Ellenberger Park"
+        image={communityPhotos.team.src}
+        imageAlt={communityPhotos.team.alt}
       />
 
       <Section>
@@ -52,13 +52,14 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src="/assets/logo-social.png"
-              alt="Indiana Ball Hockey Association logo"
+              src={communityPhotos.jerseyNavy.src}
+              alt={communityPhotos.jerseyNavy.alt}
               fill
-              className="object-contain bg-arena-elevated p-8"
+              className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-arena/50 to-transparent" />
           </div>
         </div>
       </Section>
@@ -79,14 +80,17 @@ export default function AboutPage() {
           <HistoryCard
             title="Indy Rooftop"
             description="Indianapolis's only rooftop hockey rink — a 60×40 ft deck born from Super Bowl Legacy funding and Pittsburgh hockey nostalgia. Home to fast 3-on-3 IRHL action for 50+ players."
+            image={communityPhotos.team}
           />
           <HistoryCard
             title="Ellenberger Park"
             description="A 42-acre Irvington landmark with a hockey history dating to the 1960s. After years dormant, upgraded Sport Court flooring and lighting made it IBHA's 5-on-5 home."
+            image={communityPhotos.champions}
           />
           <HistoryCard
             title="NBHL Chapter"
             description="Indiana competed two seasons in the National Ball Hockey League before refocusing on local growth. The NBHL relationship remains strong for players seeking national-level competition."
+            image={communityPhotos.trophies}
           />
         </div>
       </Section>
@@ -120,18 +124,30 @@ export default function AboutPage() {
               </Button>
             </div>
           </div>
-          <div className="glass-card p-8">
-            <h3 className="font-display text-xl font-bold uppercase text-gold">
-              The Dream Facility
-            </h3>
-            <ul className="mt-6 space-y-4">
-              <VisionItem>2 full-size ball hockey rinks</VisionItem>
-              <VisionItem>2 dedicated 3-on-3 rinks</VisionItem>
-              <VisionItem>Year-round programming</VisionItem>
-              <VisionItem>Youth & beginner leagues</VisionItem>
-              <VisionItem>Tournament hosting capacity</VisionItem>
-              <VisionItem>Multi-sport facility leasing</VisionItem>
-            </ul>
+          <div className="space-y-6">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+              <Image
+                src={communityPhotos.jerseyCream.src}
+                alt={communityPhotos.jerseyCream.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+              />
+            </div>
+            <div className="glass-card p-8">
+              <h3 className="font-display text-xl font-bold uppercase text-gold">
+                The Dream Facility
+              </h3>
+              <ul className="mt-6 space-y-4">
+                <VisionItem>2 full-size ball hockey rinks</VisionItem>
+                <VisionItem>2 dedicated 3-on-3 rinks</VisionItem>
+                <VisionItem>Year-round programming</VisionItem>
+                <VisionItem>Youth & beginner leagues</VisionItem>
+                <VisionItem>Tournament hosting capacity</VisionItem>
+                <VisionItem>Multi-sport facility leasing</VisionItem>
+              </ul>
+            </div>
           </div>
         </div>
       </Section>
@@ -142,16 +158,31 @@ export default function AboutPage() {
 function HistoryCard({
   title,
   description,
+  image,
 }: {
   title: string;
   description: string;
+  image: { src: string; alt: string };
 }) {
   return (
-    <div className="glass-card p-6 transition-all hover:border-rink-400/30">
-      <h3 className="font-display text-lg font-bold uppercase text-rink-300">
-        {title}
-      </h3>
-      <p className="mt-3 text-sm leading-relaxed text-white/65">{description}</p>
+    <div className="glass-card overflow-hidden transition-all hover:border-rink-400/30">
+      <div className="relative aspect-[16/10]">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 33vw"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-transparent to-transparent" />
+      </div>
+      <div className="p-6">
+        <h3 className="font-display text-lg font-bold uppercase text-rink-300">
+          {title}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/65">{description}</p>
+      </div>
     </div>
   );
 }

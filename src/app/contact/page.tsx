@@ -3,7 +3,8 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { SocialLinks } from "@/components/SocialLinks";
-import { externalLinks } from "@/lib/content";
+import { externalLinks, communityPhotos } from "@/lib/content";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -50,8 +51,8 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Let's Talk Hockey"
         subtitle="Whether you're curious about the sport or ready to join a league, we've got answers. Reach out — the IBHA community is welcoming and ready to help."
-        image="/assets/hero-action.jpg"
-        imageAlt="Indiana ball hockey community"
+        image={communityPhotos.team.src}
+        imageAlt={communityPhotos.team.alt}
       />
 
       <Section>
@@ -83,6 +84,28 @@ export default function ContactPage() {
           >
             YouTube
           </Button>
+        </div>
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          {[
+            communityPhotos.champions,
+            communityPhotos.trophies,
+            communityPhotos.jerseyNavy,
+            communityPhotos.jerseyCream,
+          ].map((photo) => (
+            <div
+              key={photo.src}
+              className="relative aspect-square overflow-hidden rounded-xl border border-white/10"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 50vw, 25vw"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </Section>
 

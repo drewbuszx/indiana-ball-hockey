@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
-import { externalLinks } from "@/lib/content";
+import { externalLinks, communityPhotos } from "@/lib/content";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -15,14 +15,17 @@ const products = [
   {
     title: "Team Apparel",
     description: "Jerseys, hoodies, and team-specific gear for IBHA leagues.",
+    image: communityPhotos.jerseyNavy,
   },
   {
     title: "League Swag",
     description: "Show your Ellenberger or Rooftop pride with official league merchandise.",
+    image: communityPhotos.jerseyCream,
   },
   {
     title: "IBHA Brand Gear",
     description: "Association-branded apparel for players, fans, and supporters.",
+    image: communityPhotos.champions,
   },
 ] as const;
 
@@ -39,18 +42,18 @@ export default function StorePage() {
           href: externalLinks.store,
           external: true,
         }}
-        image="/assets/logo-social.png"
-        imageAlt="IBHA official merchandise"
+        image={communityPhotos.jerseyCream.src}
+        imageAlt={communityPhotos.jerseyCream.alt}
       />
 
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative aspect-square max-w-md overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated mx-auto lg:mx-0">
+          <div className="relative aspect-square max-w-md overflow-hidden rounded-2xl border border-white/10 mx-auto lg:mx-0">
             <Image
-              src="/assets/logo.png"
-              alt="Indiana Ball Hockey Association official logo"
+              src={communityPhotos.jerseyNavy.src}
+              alt={communityPhotos.jerseyNavy.alt}
               fill
-              className="object-contain p-12"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 400px"
               loading="lazy"
             />
@@ -92,12 +95,24 @@ export default function StorePage() {
           {products.map((product) => (
             <div
               key={product.title}
-              className="glass-card p-6 text-center transition-all hover:border-gold/30"
+              className="glass-card overflow-hidden text-center transition-all hover:border-gold/30"
             >
-              <h3 className="font-display text-lg font-bold uppercase text-rink-300">
-                {product.title}
-              </h3>
-              <p className="mt-2 text-sm text-white/65">{product.description}</p>
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={product.image.src}
+                  alt={product.image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-display text-lg font-bold uppercase text-rink-300">
+                  {product.title}
+                </h3>
+                <p className="mt-2 text-sm text-white/65">{product.description}</p>
+              </div>
             </div>
           ))}
         </div>
