@@ -125,6 +125,10 @@ export const communityPhotos = {
     src: "/assets/gang.jpg",
     alt: "IBHA players posing together on the rink",
   },
+  ellenberger: {
+    src: "/assets/ellen.png",
+    alt: "Ball hockey action at Ellenberger Park",
+  },
   heroAction: {
     src: "/assets/hero-action.jpg",
     alt: "Ball hockey action at Ellenberger Park",
@@ -163,8 +167,8 @@ export const leagues = [
     audience:
       "Competitive and recreational adult players ready for standard-format hockey.",
     href: externalLinks.ellenbergerLeague,
-    image: communityPhotos.champions.src,
-    imageAlt: communityPhotos.champions.alt,
+    image: communityPhotos.ellenberger.src,
+    imageAlt: communityPhotos.ellenberger.alt,
     logo: "/assets/ellenberger-logo.png",
     badge: "5v5",
   },
