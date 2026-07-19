@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
+import { FadeIn } from "./FadeIn";
 
 interface SectionProps {
   id?: string;
@@ -7,6 +8,7 @@ interface SectionProps {
   className?: string;
   dark?: boolean;
   withRinkLines?: boolean;
+  reveal?: boolean;
 }
 
 export function Section({
@@ -15,7 +17,12 @@ export function Section({
   className,
   dark = true,
   withRinkLines = false,
+  reveal = true,
 }: SectionProps) {
+  const content = (
+    <div className="relative z-10 mx-auto max-w-7xl">{children}</div>
+  );
+
   return (
     <section
       id={id}
@@ -26,7 +33,7 @@ export function Section({
       )}
     >
       {withRinkLines && <RinkLines />}
-      <div className="relative z-10 mx-auto max-w-7xl">{children}</div>
+      {reveal ? <FadeIn>{content}</FadeIn> : content}
     </section>
   );
 }
@@ -47,15 +54,24 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "mb-8 max-w-3xl sm:mb-12",
+        "mb-8 max-w-3xl sm:mb-10",
         align === "center" && "mx-auto text-center",
         className,
       )}
     >
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+      {eyebrow && (
+        <p
+          className={cn(
+            "eyebrow mb-3",
+            align === "center" && "eyebrow-center",
+          )}
+        >
+          {eyebrow}
+        </p>
+      )}
       <h2 className="headline-lg text-balance">{title}</h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
+        <p className="mt-3 text-base leading-relaxed text-white/70 sm:mt-4 sm:text-lg">
           {description}
         </p>
       )}
@@ -66,7 +82,7 @@ export function SectionHeader({
 function RinkLines() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 opacity-[0.07]"
+      className="pointer-events-none absolute inset-0 opacity-[0.08]"
       aria-hidden="true"
     >
       <svg

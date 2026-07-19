@@ -34,6 +34,7 @@ export function Hero({
     >
       <div className="absolute inset-0 bg-rink-glow" aria-hidden="true" />
       <div className="absolute inset-0 bg-arena-lights" aria-hidden="true" />
+      <div className="hero-mesh absolute inset-0" aria-hidden="true" />
       <div className="grain absolute inset-0" aria-hidden="true" />
 
       <div className="absolute inset-0">
@@ -42,11 +43,12 @@ export function Hero({
           alt={imageAlt}
           fill
           priority={priority}
-          className="object-cover object-center opacity-40"
+          className="object-cover object-center opacity-45 transition-transform duration-[2s] ease-out motion-safe:scale-105"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-arena via-arena/80 to-arena/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-arena via-transparent to-arena/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-arena via-arena/85 to-arena/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-arena via-transparent to-arena/70" />
+        <div className="absolute inset-0 bg-gold-sheen opacity-60" aria-hidden="true" />
       </div>
 
       <HeroRinkMarkings />
@@ -57,14 +59,14 @@ export function Hero({
         }`}
       >
         <div className="max-w-4xl animate-fade-up">
-          {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+          {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
           <h1 className="headline-xl text-balance">{title}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl">
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/75 sm:mt-6 sm:text-xl">
             {subtitle}
           </p>
 
           {(primaryCta || secondaryCta) && (
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
               {primaryCta && (
                 <Button
                   href={primaryCta.href}
@@ -96,7 +98,7 @@ export function Hero({
               <StatPill label="Skill Level" value="All Welcome" />
               <StatPill label="Equipment" value="Run, Don't Skate" />
             </div>
-            <div className="mt-16 hidden items-end justify-between border-t border-white/10 pt-8 lg:flex">
+            <div className="mt-14 hidden items-end justify-between border-t border-white/10 pt-8 lg:flex">
               <StatPill label="Format" value="3v3 & 5v5" />
               <StatPill label="Location" value="Indianapolis" />
               <StatPill label="Skill Level" value="All Welcome" />
@@ -105,15 +107,28 @@ export function Hero({
           </>
         )}
       </div>
+
+      {!compact && (
+        <a
+          href="#main-content"
+          className="scroll-cue absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 motion-safe:animate-scroll-cue lg:flex"
+          aria-label="Scroll to content"
+        >
+          <span>Scroll</span>
+          <span className="scroll-cue-line" aria-hidden="true" />
+        </a>
+      )}
     </section>
   );
 }
 
 function StatPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="glass-card px-4 py-3 sm:px-6 sm:py-4">
-      <p className="text-xs uppercase tracking-widest text-rink-300">{label}</p>
-      <p className="mt-1 font-display text-sm font-bold uppercase sm:text-lg">
+    <div className="stat-pill">
+      <p className="relative text-[0.65rem] uppercase tracking-[0.18em] text-rink-300 sm:text-xs">
+        {label}
+      </p>
+      <p className="relative mt-1 font-display text-sm font-bold uppercase sm:text-lg">
         {value}
       </p>
     </div>
@@ -123,7 +138,7 @@ function StatPill({ label, value }: { label: string; value: string }) {
 function HeroRinkMarkings() {
   return (
     <svg
-      className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 w-full text-rink-300 opacity-20"
+      className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 w-full text-rink-300 opacity-25 motion-safe:animate-pulse-glow"
       viewBox="0 0 1440 120"
       preserveAspectRatio="none"
       aria-hidden="true"

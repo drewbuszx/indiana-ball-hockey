@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Indiana's home for competitive and recreational ball hockey. Run instead of skate. Play year-round across Indianapolis leagues.",
   url: "https://www.indianaballhockey.com",
-  tagline: "Growing ball hockey across Indiana — one shift at a time.",
+  tagline: "Growing ball hockey across Indiana, one shift at a time.",
 };
 
 export const socialLinks = {
@@ -34,7 +34,7 @@ export const whyBallHockey = [
   {
     title: "No Skates Required",
     description:
-      "Players run on foot. If you can move, you can play — no skating lessons or ice time needed.",
+      "Players run on foot. If you can move, you can play: no skating lessons or ice time needed.",
     stat: "0",
     statLabel: "skates",
   },
@@ -48,7 +48,7 @@ export const whyBallHockey = [
   {
     title: "Fast & Competitive",
     description:
-      "Same nonstop action, physical play, and team strategy as ice hockey — at a pace all its own.",
+      "Same nonstop action, physical play, and team strategy as ice hockey, at a pace all its own.",
     stat: "100%",
     statLabel: "hockey heart",
   },
@@ -61,30 +61,37 @@ export const whyBallHockey = [
   },
 ] as const;
 
+/** Canonical registration destination (Leagues page anchor). */
+export const registerPath = "/leagues#register";
+
 export const quickPaths = [
   {
     title: "Play",
     description: "Find your league and hit the rink this season.",
     href: "/leagues",
     accent: "rink-400",
+    cta: "Explore",
   },
   {
     title: "Learn",
     description: "New to ball hockey? Start with the basics.",
     href: "/#what-is-ball-hockey",
     accent: "gold",
+    cta: "Explore",
   },
   {
     title: "Compete",
     description: "5-on-5 at Ellenberger or 3-on-3 on the rooftop.",
     href: "/leagues",
     accent: "rink-300",
+    cta: "Explore",
   },
   {
     title: "Sponsor",
     description: "Partner with IBHA and grow the sport in Indiana.",
     href: "/contact#partners",
     accent: "gold-light",
+    cta: "Explore",
   },
 ] as const;
 
@@ -249,7 +256,7 @@ export const leagues = [
     format: "5-on-5",
     surface: "Indoor Sport Court",
     description:
-      "IBHA's flagship full-size league at Ellenberger Park. Competitive 5-on-5 ball hockey on upgraded Sport Court flooring — the home rink for Indiana's growing ball hockey community.",
+      "IBHA's flagship full-size league at Ellenberger Park. Competitive 5-on-5 ball hockey on upgraded Sport Court flooring, the home rink for Indiana's growing ball hockey community.",
     audience:
       "Competitive and recreational adult players ready for standard-format hockey.",
     href: externalLinks.ellenbergerLeague,
@@ -332,14 +339,14 @@ export const contactAudiences = [
   {
     title: "New Players",
     description:
-      "Curious about ball hockey? Ask us anything — we'll help you find the right league and get on the rink.",
+      "Curious about ball hockey? Ask us anything. We'll help you find the right league and get on the rink.",
     cta: "Message on Facebook",
     href: socialLinks.facebook,
   },
   {
     title: "Current Players",
     description:
-      "League questions, schedule info, or community updates — connect with IBHA on social for the latest.",
+      "League questions, schedule info, or community updates: connect with IBHA on social for the latest.",
     cta: "Follow on Instagram",
     href: socialLinks.instagram,
   },
@@ -353,7 +360,7 @@ export const contactAudiences = [
   {
     title: "Parents & Youth",
     description:
-      "Interested in youth programming? Connect with us — we're working to expand opportunities for the next generation of players.",
+      "Interested in youth programming? Connect with us. We're working to expand opportunities for the next generation of players.",
     cta: "Contact via Social",
     href: socialLinks.facebook,
   },
@@ -370,21 +377,21 @@ export const timelineEvents = [
     year: "2011",
     title: "Rooftop Rink Born",
     description:
-      "Super Bowl Legacy funding helps ECDC renovate the building into apartments with a gymnasium. Executive Director Joe Bowling brings Indianapolis its first rooftop hockey rink — recreating Pittsburgh dek hockey memories.",
+      "Super Bowl Legacy funding helps ECDC renovate the building into apartments with a gymnasium. Executive Director Joe Bowling brings Indianapolis its first rooftop hockey rink, recreating Pittsburgh dek hockey memories.",
     quote:
       "We built the rooftop rink in hopes of re-creating our family's experience playing dek hockey in Pittsburgh when we were kids.",
   },
   {
-    year: "2011–2023",
+    year: "2011-2023",
     title: "Indy Rooftop Hockey League Grows",
     description:
       "The IRHL thrives on the compact 60×40 ft rooftop rink. Fast 3-on-3 play attracts 50+ active players as interest in rooftop hockey continues to grow.",
   },
   {
-    year: "1960s–2009",
+    year: "1960s-2009",
     title: "Ellenberger's Ice Era",
     description:
-      "Ellenberger Park's outdoor ice rink — enclosed in 1974 — hosts public skating and competitive hockey until costly repairs force closure in 2009.",
+      "Ellenberger Park's outdoor ice rink (enclosed in 1974) hosts public skating and competitive hockey until costly repairs force closure in 2009.",
   },
   {
     year: "2015",
@@ -393,7 +400,7 @@ export const timelineEvents = [
       "The Indy Inline Hockey League moves into Ellenberger's dormant rink after three years on a repurposed tennis court in South Broad Ripple.",
   },
   {
-    year: "2020–2021",
+    year: "2020-2021",
     title: "Ellenberger Upgrades",
     description:
       "Ryan Spahr and league leadership convince the Parks Department to install new Sport Court flooring (2020) and upgraded lighting (2021), transforming the facility.",
@@ -402,7 +409,7 @@ export const timelineEvents = [
     year: "2022",
     title: "NBHL Expansion",
     description:
-      "Indiana becomes an expansion division of the National Ball Hockey League — the first nationwide ball hockey league sanctioned by USA Ball Hockey.",
+      "Indiana becomes an expansion division of the National Ball Hockey League, the first nationwide ball hockey league sanctioned by USA Ball Hockey.",
   },
   {
     year: "2023",
@@ -411,7 +418,7 @@ export const timelineEvents = [
       "The Indiana Ball Hockey Association launches. The Indiana Division of the NBHL begins play at Ellenberger with three local teams and one visiting team from Columbus, Ohio.",
   },
   {
-    year: "2024–2025",
+    year: "2024-2025",
     title: "Focused on Home",
     description:
       "After two valuable NBHL seasons, IBHA leadership pivots to concentrate on growing ball hockey locally. The NBHL relationship remains strong for players seeking national competition.",

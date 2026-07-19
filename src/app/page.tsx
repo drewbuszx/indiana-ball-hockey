@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
-import {
-  FeatureCard,
-  LeagueCard,
-  QuickPathCard,
-} from "@/components/LeagueCard";
+import { FeatureCard, QuickPathCard } from "@/components/LeagueCard";
 import { Gallery } from "@/components/Gallery";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
+import { StaggerChildren } from "@/components/StaggerChildren";
 import { SocialLinks } from "@/components/SocialLinks";
 import {
   communityPhotos,
   galleryPhotos,
-  leagues,
   quickPaths,
+  registerPath,
   siteConfig,
   socialLinks,
   whyBallHockey,
@@ -32,7 +29,7 @@ export default function HomePage() {
       <Hero
         eyebrow="Indiana Ball Hockey Association"
         title="Hockey Without The Ice."
-        subtitle="Run instead of skate. Compete at Ellenberger or the rooftop. IBHA is building Indiana's ball hockey community — beginners to veterans welcome."
+        subtitle="Run instead of skate. Compete at Ellenberger or the rooftop. IBHA is building Indiana's ball hockey community, from beginners to veterans."
         primaryCta={{ label: "Find a League", href: "/leagues" }}
         secondaryCta={{
           label: "What Is Ball Hockey?",
@@ -47,15 +44,15 @@ export default function HomePage() {
         <SectionHeader
           eyebrow="Get Started"
           title="Your Path to the Rink"
-          description="Whether you're curious, competitive, or ready to sponsor — there's a lane for you."
+          description="Whether you're curious, competitive, or ready to sponsor, there's a lane for you."
           align="center"
           className="mx-auto"
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {quickPaths.map((path) => (
             <QuickPathCard key={path.title} {...path} />
           ))}
-        </div>
+        </StaggerChildren>
       </Section>
 
       <Section id="what-is-ball-hockey" withRinkLines>
@@ -64,7 +61,7 @@ export default function HomePage() {
             <SectionHeader
               eyebrow="The Sport"
               title="What Is Ball Hockey?"
-              description="Ball hockey — also called dek, floor, or street hockey — is hockey you play on foot. Same intensity. Same teamwork. No skates required."
+              description="Ball hockey (also called dek, floor, or street hockey) is hockey you play on foot. Same intensity. Same teamwork. No skates required."
             />
             <p className="prose-body">
               Players run instead of skate and use a ball instead of a puck. That
@@ -73,7 +70,7 @@ export default function HomePage() {
               make hockey great.
             </p>
             <p className="mt-4 prose-body">
-              Ball hockey has its own pace, rules, and culture — and it&apos;s
+              Ball hockey has its own pace, rules, and culture, and it&apos;s
               growing fast across the country. In Indiana, IBHA is at the center
               of that growth.
             </p>
@@ -83,12 +80,12 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <div className="media-frame aspect-[4/3]">
+          <div className="group media-frame aspect-[4/3]">
             <Image
               src={communityPhotos.nbhlAction.src}
               alt={communityPhotos.nbhlAction.alt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
@@ -98,23 +95,20 @@ export default function HomePage() {
       </Section>
 
       <Section dark={false}>
-        <SectionHeader
-          eyebrow="Leagues"
-          title="Two Rinks. Two Experiences."
-          description="From fast 3-on-3 rooftop battles to full-size 5-on-5 at Ellenberger — pick your game."
-          align="center"
-          className="mx-auto"
-        />
-        <div className="grid gap-8 lg:grid-cols-2">
-          {leagues.map((league) => (
-            <LeagueCard key={league.id} {...league} />
-          ))}
-        </div>
-        <div className="mt-12 text-center">
-          <p className="prose-muted">Not sure where to start?</p>
-          <Button href="/contact" variant="ghost" className="mt-4">
-            Reach Out — We&apos;ll Help You Choose
-          </Button>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeader
+            eyebrow="Leagues"
+            title="Two Rinks. Two Experiences."
+            description="Full-size 5-on-5 at Ellenberger Park or lightning-fast 3-on-3 on Indy's rooftop rink. Compare formats, then join when you're ready."
+            align="center"
+            className="mx-auto"
+          />
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <Button href="/leagues">Explore Leagues</Button>
+            <Button href={registerPath} variant="secondary">
+              Join a League
+            </Button>
+          </div>
         </div>
       </Section>
 
@@ -122,25 +116,25 @@ export default function HomePage() {
         <SectionHeader
           eyebrow="Why Ball Hockey"
           title="All the Hockey. None of the Barriers."
-          description="Accessible, affordable, and fiercely competitive — ball hockey is how more Hoosiers get on the rink."
+          description="Accessible, affordable, and fiercely competitive: ball hockey is how more Hoosiers get on the rink."
           align="center"
           className="mx-auto"
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {whyBallHockey.map((item) => (
             <FeatureCard key={item.title} {...item} />
           ))}
-        </div>
+        </StaggerChildren>
       </Section>
 
       <Section dark={false}>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="media-frame aspect-[16/10]">
+          <div className="group media-frame aspect-[16/10]">
             <Image
               src={communityPhotos.rooftopRink.src}
               alt={communityPhotos.rooftopRink.alt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
@@ -150,7 +144,7 @@ export default function HomePage() {
             <SectionHeader
               eyebrow="Community"
               title="Built in Indianapolis. Growing Across Indiana."
-              description="From a rooftop dream in 2011 to Ellenberger's upgraded rink and beyond — IBHA carries decades of Indy hockey history forward."
+              description="From a rooftop dream in 2011 to Ellenberger's upgraded rink and beyond, IBHA carries decades of Indy hockey history forward."
             />
             <p className="prose-body">
               What started as a Pittsburgh transplant&apos;s vision for rooftop
@@ -185,7 +179,7 @@ export default function HomePage() {
       </Section>
 
       <Section className="bg-gradient-to-b from-arena to-arena-surface">
-        <div className="glass-card mx-auto max-w-4xl p-8 text-center ring-1 ring-white/10 sm:p-12">
+        <div className="glass-card mx-auto max-w-4xl p-8 text-center ring-1 ring-white/10 transition-all duration-300 hover:border-rink-400/25 hover:shadow-2xl hover:shadow-rink-500/10 sm:p-12">
           <p className="eyebrow mb-3 text-gold">Stay Connected</p>
           <h2 className="headline-lg">Join the Conversation</h2>
           <p className="mx-auto mt-4 max-w-xl prose-body">

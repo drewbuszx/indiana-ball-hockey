@@ -27,10 +27,11 @@ const config: Config = {
           elevated: "#1a2234",
           border: "#2a3548",
         },
+        // Brand orange sampled from public/assets/logo.png (token name kept as gold for class compatibility)
         gold: {
-          DEFAULT: "#c9a227",
-          light: "#e8c547",
-          muted: "#8a7120",
+          DEFAULT: "#fc6619",
+          light: "#ff8533",
+          muted: "#b34710",
         },
       },
       fontFamily: {
@@ -41,11 +42,18 @@ const config: Config = {
         "rink-glow":
           "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(13,110,196,0.35), transparent)",
         "arena-lights":
-          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,162,39,0.08), transparent 70%)",
+          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(252,102,25,0.08), transparent 70%)",
+        "gold-sheen":
+          "linear-gradient(135deg, rgba(252,102,25,0.15) 0%, transparent 50%, rgba(13,110,196,0.1) 100%)",
+      },
+      spacing: {
+        "18": "4.5rem",
       },
       animation: {
         "fade-up": "fadeUp 0.7s ease-out forwards",
         "slide-in": "slideIn 0.5s ease-out forwards",
+        "scroll-cue": "scrollCue 2s ease-in-out infinite",
+        "pulse-glow": "pulseGlow 3s ease-in-out infinite",
       },
       keyframes: {
         fadeUp: {
@@ -55,6 +63,14 @@ const config: Config = {
         slideIn: {
           "0%": { opacity: "0", transform: "translateX(-12px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        scrollCue: {
+          "0%, 100%": { opacity: "0.4", transform: "translateY(0)" },
+          "50%": { opacity: "1", transform: "translateY(6px)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
         },
       },
     },

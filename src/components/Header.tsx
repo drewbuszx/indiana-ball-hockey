@@ -39,15 +39,15 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
           scrolled
-            ? "border-b border-white/10 bg-arena/90 backdrop-blur-xl shadow-lg shadow-black/20"
-            : "bg-arena/40 backdrop-blur-sm",
+            ? "border-b border-white/10 bg-arena/95 backdrop-blur-xl shadow-xl shadow-black/25"
+            : "bg-gradient-to-b from-arena/80 via-arena/50 to-transparent backdrop-blur-sm",
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 pb-1.5 pt-[max(0.375rem,env(safe-area-inset-top))] sm:px-8 sm:py-2.5 lg:px-12">
           <Link
             href="/"
             className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-arena rounded-lg"
-            aria-label="Indiana Ball Hockey Association — Home"
+            aria-label="Indiana Ball Hockey Association Home"
           >
             <Image
               src="/assets/logo.png"
@@ -88,7 +88,7 @@ export function Header() {
 
           <div className="hidden items-center gap-4 lg:flex">
             <SocialLinks size="sm" />
-            <Button href="/leagues" size="sm">
+            <Button href="/leagues#register" size="sm">
               Join a League
             </Button>
           </div>

@@ -5,6 +5,8 @@
 @layer base {
   html {
     overflow-x: clip;
+    /* Clear fixed header when jumping to #register and other anchors */
+    scroll-padding-top: 6.5rem;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -24,43 +26,93 @@
 
 @layer components {
   .glass-card {
-    @apply rounded-2xl border border-white/10 bg-arena-elevated/80 backdrop-blur-md;
+    @apply rounded-2xl border border-white/10 bg-arena-elevated/80 backdrop-blur-md shadow-lg shadow-black/10;
   }
 
   .glass-card-interactive {
-    @apply glass-card transition-all duration-300 hover:-translate-y-1 hover:border-rink-400/30 hover:shadow-xl hover:shadow-black/20;
+    @apply glass-card transition-all duration-300 hover:-translate-y-1.5 hover:border-rink-400/35 hover:shadow-2xl hover:shadow-rink-500/10;
   }
 
   .section-pad {
-    @apply px-5 py-16 sm:px-8 sm:py-20 lg:px-12 xl:px-16 2xl:px-24;
+    @apply px-5 py-14 sm:px-8 sm:py-18 lg:px-12 lg:py-20 xl:px-16 2xl:px-24;
   }
 
   .headline-xl {
-    @apply font-display text-4xl font-bold uppercase leading-[1.0] tracking-tight sm:text-5xl sm:leading-[0.95] md:text-6xl lg:text-7xl;
+    @apply font-display text-[2.35rem] font-bold uppercase leading-[0.98] tracking-tight sm:text-5xl sm:leading-[0.95] md:text-6xl lg:text-7xl;
   }
 
   .headline-lg {
-    @apply font-display text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl lg:text-5xl;
+    @apply font-display text-[1.75rem] font-bold uppercase leading-tight tracking-tight sm:text-4xl lg:text-5xl;
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-rink-300;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-rink-300;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-6 bg-gradient-to-r from-rink-400 to-transparent;
+  }
+
+  .eyebrow-center {
+    @apply flex-col items-center gap-2;
+  }
+
+  .eyebrow-center::before {
+    @apply hidden;
+  }
+
+  .eyebrow-center::after {
+    content: "";
+    @apply h-px w-12 bg-gradient-to-r from-transparent via-gold/60 to-transparent;
   }
 
   .prose-body {
-    @apply text-white/70 leading-relaxed;
+    @apply text-base text-white/70 leading-relaxed;
   }
 
   .prose-muted {
-    @apply text-sm text-white/55 leading-relaxed;
+    @apply text-sm text-white/60 leading-relaxed;
   }
 
   .media-frame {
-    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated;
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated shadow-lg shadow-black/15 transition-all duration-500;
+  }
+
+  .media-frame-interactive {
+    @apply media-frame group-hover:border-rink-400/25 group-hover:shadow-xl group-hover:shadow-rink-500/10;
   }
 
   .media-frame-overlay {
-    @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-arena/60 via-arena/10 to-transparent;
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-arena/65 via-arena/15 to-transparent transition-opacity duration-500 group-hover:opacity-90;
+  }
+
+  .stat-pill {
+    @apply glass-card relative overflow-hidden px-4 py-3 ring-1 ring-white/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-rink-400/30 hover:ring-rink-400/20 sm:px-6 sm:py-4;
+  }
+
+  .stat-pill::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-br from-rink-500/10 via-transparent to-gold/5 opacity-0 transition-opacity duration-300;
+  }
+
+  .stat-pill:hover::before {
+    @apply opacity-100;
+  }
+
+  .scroll-cue {
+    @apply flex flex-col items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/40;
+  }
+
+  .scroll-cue-line {
+    @apply h-10 w-px bg-gradient-to-b from-rink-400/60 to-transparent;
+  }
+
+  .hero-mesh {
+    background-image:
+      radial-gradient(ellipse 70% 55% at 15% 20%, rgba(13, 110, 196, 0.28), transparent 65%),
+      radial-gradient(ellipse 55% 45% at 85% 15%, rgba(252, 102, 25, 0.12), transparent 60%),
+      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(13, 110, 196, 0.18), transparent 70%);
   }
 }
 
@@ -76,7 +128,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .animate-slide-in {
+  .animate-slide-in,
+  .animate-scroll-cue {
     animation: none !important;
   }
 

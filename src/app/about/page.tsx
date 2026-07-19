@@ -3,6 +3,7 @@ import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { Section, SectionHeader } from "@/components/Section";
 import { Timeline } from "@/components/Timeline";
+import { StaggerChildren } from "@/components/StaggerChildren";
 import { timelineEvents, communityPhotos } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
@@ -10,7 +11,7 @@ import Image from "next/image";
 export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "Learn about the Indiana Ball Hockey Association — our mission, Indianapolis hockey history, and vision for the future of ball hockey in Indiana.",
+    "Learn about the Indiana Ball Hockey Association: our mission, Indianapolis hockey history, and vision for the future of ball hockey in Indiana.",
   path: "/about",
 });
 
@@ -21,8 +22,8 @@ export default function AboutPage() {
         compact
         eyebrow="About IBHA"
         title="Growing the Game at Home"
-        subtitle="The Indiana Ball Hockey Association is the home for competitive and recreational ball hockey in Indiana — inclusive, community-driven, and built for every skill level."
-        primaryCta={{ label: "Join a League", href: "/leagues" }}
+        subtitle="The Indiana Ball Hockey Association is the home for competitive and recreational ball hockey in Indiana: inclusive, community-driven, and built for every skill level."
+        primaryCta={{ label: "Explore Leagues", href: "/leagues" }}
         image={communityPhotos.aboutHero.src}
         imageAlt={communityPhotos.aboutHero.alt}
       />
@@ -47,17 +48,17 @@ export default function AboutPage() {
               </p>
               <p>
                 Whether you&apos;re here to learn the basics, join a league, or
-                connect with others who share your enthusiasm — IBHA has a place
+                connect with others who share your enthusiasm, IBHA has a place
                 for you.
               </p>
             </div>
           </div>
-          <div className="media-frame aspect-[4/3]">
+          <div className="group media-frame aspect-[4/3]">
             <Image
               src={communityPhotos.jerseyNavy.src}
               alt={communityPhotos.jerseyNavy.alt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               sizes="(max-width: 1024px) 100vw, 50vw"
               loading="lazy"
             />
@@ -70,7 +71,7 @@ export default function AboutPage() {
         <SectionHeader
           eyebrow="History"
           title="Indy Ball Hockey History"
-          description="From a donated building on the Near Eastside to Ellenberger Park's reborn rink — Indiana's ball hockey story runs deep."
+          description="From a donated building on the Near Eastside to Ellenberger Park's reborn rink, Indiana's ball hockey story runs deep."
           align="center"
           className="mx-auto"
         />
@@ -78,10 +79,10 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <div className="grid gap-8 lg:grid-cols-3">
+        <StaggerChildren className="grid gap-8 lg:grid-cols-3" staggerMs={100}>
           <HistoryCard
             title="Indy Rooftop"
-            description="Indianapolis's only rooftop hockey rink — a 60×40 ft deck born from Super Bowl Legacy funding and Pittsburgh hockey nostalgia. Home to fast 3-on-3 IRHL action for 50+ players."
+            description="Indianapolis's only rooftop hockey rink: a 60×40 ft deck born from Super Bowl Legacy funding and Pittsburgh hockey nostalgia. Home to fast 3-on-3 IRHL action for 50+ players."
             image={communityPhotos.historyRooftop}
           />
           <HistoryCard
@@ -94,7 +95,7 @@ export default function AboutPage() {
             description="Indiana competed two seasons in the National Ball Hockey League before refocusing on local growth. The NBHL relationship remains strong for players seeking national-level competition."
             image={communityPhotos.historyNbhl}
           />
-        </div>
+        </StaggerChildren>
       </Section>
 
       <Section id="future" dark={false}>
@@ -103,7 +104,7 @@ export default function AboutPage() {
             <SectionHeader
               eyebrow="Vision"
               title="What Comes Next"
-              description="IBHA's focus is building ball hockey in Indiana — with bigger ambitions on the horizon."
+              description="IBHA's focus is building ball hockey in Indiana, with bigger ambitions on the horizon."
             />
             <div className="space-y-4 prose-body">
               <p>
@@ -114,7 +115,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Our long-term goal: a permanent home with at least two full-size
-                rinks and two 3-on-3 rinks — enabling state, regional, and
+                rinks and two 3-on-3 rinks, enabling state, regional, and
                 national tournaments, plus facility leasing for inline hockey,
                 roller derby, and more.
               </p>
@@ -127,17 +128,18 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="space-y-6">
-            <div className="media-frame aspect-[4/3]">
+            <div className="group media-frame aspect-[4/3]">
               <Image
                 src={communityPhotos.rink.src}
                 alt={communityPhotos.rink.alt}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
               />
+              <div className="media-frame-overlay" />
             </div>
-            <div className="glass-card p-8">
+            <div className="glass-card p-8 ring-1 ring-gold/10 transition-all duration-300 hover:border-gold/25 hover:shadow-xl hover:shadow-gold/10">
               <h3 className="font-display text-xl font-bold uppercase text-gold">
                 The Dream Facility
               </h3>
@@ -168,7 +170,7 @@ function HistoryCard({
 }) {
   return (
     <article className="glass-card-interactive group overflow-hidden">
-      <div className="media-frame aspect-[16/10]">
+      <div className="media-frame aspect-[16/10] rounded-b-none border-b-0">
         <Image
           src={image.src}
           alt={image.alt}

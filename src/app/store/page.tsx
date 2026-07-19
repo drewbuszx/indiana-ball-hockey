@@ -6,6 +6,7 @@ import { externalLinks, communityPhotos } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
+import { StaggerChildren } from "@/components/StaggerChildren";
 
 export const metadata: Metadata = pageMetadata({
   title: "Store",
@@ -44,7 +45,7 @@ export default function StorePage() {
         compact
         eyebrow="Official Merch"
         title="Wear the Colors"
-        subtitle="The IBHA store is open — shop team and league apparel, swag, and official Indiana Ball Hockey Association gear."
+        subtitle="The IBHA store is open. Shop team and league apparel, swag, and official Indiana Ball Hockey Association gear."
         primaryCta={{
           label: "Shop Now",
           href: externalLinks.store,
@@ -56,21 +57,22 @@ export default function StorePage() {
 
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="media-frame mx-auto aspect-square max-w-md lg:mx-0">
+          <div className="group media-frame mx-auto aspect-square max-w-md lg:mx-0">
             <Image
               src={communityPhotos.storeHero.src}
               alt={communityPhotos.storeHero.alt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               sizes="(max-width: 768px) 100vw, 400px"
               loading="lazy"
             />
+            <div className="media-frame-overlay" />
           </div>
           <div>
             <SectionHeader
               eyebrow="IBHA Store"
               title="Official Gear & Apparel"
-              description="Powered by Hagan Custom Sports — your source for authentic IBHA merchandise."
+              description="Powered by Hagan Custom Sports, your source for authentic IBHA merchandise."
             />
             <p className="prose-body">
               Whether you&apos;re suiting up for game night or repping IBHA off
@@ -99,7 +101,7 @@ export default function StorePage() {
           align="center"
           className="mx-auto"
         />
-        <div className="grid gap-6 sm:grid-cols-3">
+        <StaggerChildren className="grid gap-6 sm:grid-cols-3" staggerMs={100}>
           {products.map((product) => (
             <Link
               key={product.title}
@@ -135,7 +137,7 @@ export default function StorePage() {
               </div>
             </Link>
           ))}
-        </div>
+        </StaggerChildren>
         <div className="mt-12 text-center">
           <Button href={externalLinks.store} external variant="secondary">
             Browse All Products

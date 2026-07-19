@@ -40,7 +40,7 @@ Rejected brochure layout, tiny hero, old Squarespace structure.
 |-------|-----|-------|
 | arena | #0a0e17 | Primary background |
 | rink-400/500 | #1a8ae8 / #0d6ec4 | Accents |
-| gold | #c9a227 | CTAs, badges |
+| gold | #fc6619 | CTAs, badges (logo orange) |
 
 ## Typography
 

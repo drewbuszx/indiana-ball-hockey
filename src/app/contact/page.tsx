@@ -12,6 +12,7 @@ import {
 import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
+import { StaggerChildren } from "@/components/StaggerChildren";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
@@ -27,7 +28,7 @@ export default function ContactPage() {
         compact
         eyebrow="Contact"
         title="Let's Talk Hockey"
-        subtitle="Whether you're curious about the sport or ready to join a league, we've got answers. Reach out — the IBHA community is welcoming and ready to help."
+        subtitle="Whether you're curious about the sport or ready to join a league, we've got answers. Reach out. The IBHA community is welcoming and ready to help."
         image={communityPhotos.team.src}
         imageAlt={communityPhotos.team.alt}
       />
@@ -36,18 +37,18 @@ export default function ContactPage() {
         <SectionHeader
           eyebrow="Connect"
           title="How to Reach IBHA"
-          description="We connect with players, sponsors, and fans through social media. Drop us a message — we respond to everyone."
+          description="We connect with players, sponsors, and fans through social media. Drop us a message. We respond to everyone."
           align="center"
           className="mx-auto"
         />
         <div className="flex justify-center">
           <SocialLinks size="lg" />
         </div>
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        <StaggerChildren className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4" staggerMs={60}>
           {contactConnectPhotos.map((photo) => (
             <div
               key={photo.src}
-              className="media-frame aspect-square bg-arena-elevated"
+              className="group media-frame aspect-square bg-arena-elevated"
             >
               <Image
                 src={photo.src}
@@ -55,15 +56,16 @@ export default function ContactPage() {
                 fill
                 className={
                   photo.fit === "contain"
-                    ? "object-contain p-3 sm:p-4"
-                    : "object-cover object-center"
+                    ? "object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-105 sm:p-4"
+                    : "object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                 }
                 sizes="(max-width: 640px) 50vw, 25vw"
                 loading="lazy"
               />
+              <div className="media-frame-overlay opacity-0 group-hover:opacity-70" />
             </div>
           ))}
-        </div>
+        </StaggerChildren>
       </Section>
 
       <Section id="partners" dark={false}>
@@ -74,7 +76,7 @@ export default function ContactPage() {
           align="center"
           className="mx-auto"
         />
-        <div className="grid gap-6 sm:grid-cols-2">
+        <StaggerChildren className="grid gap-6 sm:grid-cols-2" staggerMs={100}>
           {contactAudiences.map((item) => (
             <article
               key={item.title}
@@ -98,29 +100,42 @@ export default function ContactPage() {
               </Link>
             </article>
           ))}
-        </div>
+        </StaggerChildren>
       </Section>
 
       <Section>
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div className="glass-card p-8">
+        <StaggerChildren className="grid gap-8 lg:grid-cols-2" staggerMs={120}>
+          <div className="glass-card p-8 ring-1 ring-gold/15 transition-all duration-300 hover:border-gold/30 hover:shadow-xl hover:shadow-gold/10">
             <h3 className="font-display text-xl font-bold uppercase">
               Ready to Play?
             </h3>
             <p className="mt-3 prose-body">
-              Head straight to our league pages on Kreezee to register, view
-              schedules, and see rosters.
+              Head to our league pages on Kreezee to register, view schedules,
+              and see rosters.
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <Button href={externalLinks.ellenbergerLeague} external>
                 Ellenberger League
               </Button>
-              <Button href={externalLinks.rooftopLeague} external variant="secondary">
+              <Button
+                href={externalLinks.rooftopLeague}
+                external
+                variant="secondary"
+              >
                 Rooftop League
               </Button>
             </div>
+            <p className="mt-4 text-sm text-white/45">
+              Prefer a side-by-side view?{" "}
+              <Link
+                href="/leagues#register"
+                className="font-medium text-rink-300 underline-offset-4 hover:text-gold hover:underline"
+              >
+                Join a league
+              </Link>
+            </p>
           </div>
-          <div className="glass-card p-8">
+          <div className="glass-card p-8 transition-all duration-300 hover:border-rink-400/25 hover:shadow-xl hover:shadow-rink-500/10">
             <h3 className="font-display text-xl font-bold uppercase">
               Official Gear
             </h3>
@@ -137,7 +152,7 @@ export default function ContactPage() {
               Shop IBHA Store
             </Button>
           </div>
-        </div>
+        </StaggerChildren>
       </Section>
     </>
   );

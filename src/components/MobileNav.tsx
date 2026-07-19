@@ -60,8 +60,11 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             return (
               <li
                 key={href}
-                className="motion-safe:animate-slide-in"
-                style={{ animationDelay: `${i * 50}ms` }}
+                className="motion-safe:animate-slide-in opacity-0"
+                style={{
+                  animationDelay: open ? `${i * 60 + 80}ms` : "0ms",
+                  animationFillMode: "forwards",
+                }}
               >
                 <Link
                   href={href}
@@ -88,7 +91,12 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
         </div>
 
         <div className="mt-auto pt-8">
-          <Button href="/leagues" className="w-full" tabIndex={open ? 0 : -1}>
+          <Button
+            href="/leagues#register"
+            className="w-full"
+            tabIndex={open ? 0 : -1}
+            onClick={onClose}
+          >
             Join a League
           </Button>
         </div>

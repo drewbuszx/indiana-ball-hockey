@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SocialLinks } from "./SocialLinks";
 
 const externalLinkClass =
-  "text-sm text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 rounded";
+  "text-sm text-white/60 transition-all duration-200 hover:text-white hover:translate-x-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 rounded";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ export function Footer() {
             <Link
               href="/"
               className="inline-block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400"
-              aria-label={`${siteConfig.name} — Home`}
+              aria-label={`${siteConfig.name} Home`}
             >
               <Image
                 src="/assets/logo.png"
@@ -52,6 +52,11 @@ export function Footer() {
           <div>
             <h2 className="eyebrow">Leagues & Shop</h2>
             <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/leagues#register" className={externalLinkClass}>
+                  Join a League
+                </Link>
+              </li>
               <li>
                 <a
                   href={externalLinks.ellenbergerLeague}
