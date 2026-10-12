@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "Indiana Ball Hockey Association",
   shortName: "IBHA",
   description:
-    "Indiana's home for competitive and recreational ball hockey. Run instead of skate. Play year-round across Indianapolis leagues.",
+    "Indiana's governing body for ball hockey. IBHA oversees leagues across the state, connecting players, sponsors, and communities from Indianapolis to Northwest Indiana.",
   url: "https://www.indianaballhockey.com",
-  tagline: "Growing ball hockey across Indiana, one shift at a time.",
+  tagline: "Hockey without the ice. Indiana without the limits.",
 };
 
 export const socialLinks = {
@@ -20,80 +20,26 @@ export const externalLinks = {
     "https://www.kreezee.com/hockey/league/ellenberger-ball-hockey-league/23179",
   rooftopLeague:
     "https://www.kreezee.com/hockey/league/indy-rooftop-hockey-league/23180",
+  sponsorshipForm: "/assets/IBHA-2027-Sponsorship-Form.pdf",
+  sponsorPage: "/sponsor",
 } as const;
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/leagues", label: "Leagues" },
+  { href: "/#leagues", label: "Leagues" },
+  { href: "/#join", label: "Join" },
+  { href: "/sponsor", label: "Sponsor" },
   { href: "/store", label: "Store" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const whyBallHockey = [
-  {
-    title: "No Skates Required",
-    description:
-      "Players run on foot. If you can move, you can play: no skating lessons or ice time needed.",
-    stat: "0",
-    statLabel: "skates",
-  },
-  {
-    title: "More Affordable",
-    description:
-      "Skip the expensive gear and rink fees. Ball hockey keeps hockey accessible without sacrificing intensity.",
-    stat: "$",
-    statLabel: "lower barrier",
-  },
-  {
-    title: "Fast & Competitive",
-    description:
-      "Same nonstop action, physical play, and team strategy as ice hockey, at a pace all its own.",
-    stat: "100%",
-    statLabel: "hockey heart",
-  },
-  {
-    title: "All Skill Levels",
-    description:
-      "From first-timers to seasoned competitors, IBHA leagues welcome everyone who loves the game.",
-    stat: "2",
-    statLabel: "leagues",
-  },
-] as const;
+/** Canonical registration destination (home join anchor). */
+export const registerPath = "/#join";
 
-/** Canonical registration destination (Leagues page anchor). */
-export const registerPath = "/leagues#register";
-
-export const quickPaths = [
-  {
-    title: "Play",
-    description: "Find your league and hit the rink this season.",
-    href: "/leagues",
-    accent: "rink-400",
-    cta: "Explore",
-  },
-  {
-    title: "Learn",
-    description: "New to ball hockey? Start with the basics.",
-    href: "/#what-is-ball-hockey",
-    accent: "gold",
-    cta: "Explore",
-  },
-  {
-    title: "Compete",
-    description: "5-on-5 at Ellenberger or 3-on-3 on the rooftop.",
-    href: "/leagues",
-    accent: "rink-300",
-    cta: "Explore",
-  },
-  {
-    title: "Sponsor",
-    description: "Partner with IBHA and grow the sport in Indiana.",
-    href: "/contact#partners",
-    accent: "gold-light",
-    cta: "Explore",
-  },
-] as const;
+export const brandAssets = {
+  logo: "/assets/ibha-logo.png",
+  logoPrimary: "/assets/ibha-logo-primary.png",
+} as const;
 
 export const communityPhotos = {
   champions: {
@@ -204,6 +150,18 @@ export const communityPhotos = {
     src: "/assets/irhl.png",
     alt: "Indy Rooftop Hockey League crest",
   },
+  irhlCover: {
+    src: "/assets/leagues/irhl-cover.jpg",
+    alt: "Indy Rooftop Hockey League rink overlooking the Indianapolis skyline",
+  },
+  nwibhlCover: {
+    src: "/assets/leagues/nwibhl-cover.jpg",
+    alt: "Northwest Indiana Ball Hockey League sunset cover art",
+  },
+  nwibhlHero: {
+    src: "/assets/leagues/nwibhl-hero.webp",
+    alt: "Northwest Indiana Ball Hockey League atmosphere",
+  },
   storeHero: {
     src: "/assets/store-hero.png",
     alt: "Navy IBHA jersey with orange mascot crest and number 15",
@@ -245,43 +203,84 @@ export const contactConnectPhotos = [
     ...communityPhotos.irhlLogo,
     fit: "contain" as const,
   },
-  { ...communityPhotos.jerseyNavy, fit: "cover" as const },
+  {
+    src: "/assets/nwibhl-logo.png",
+    alt: "Northwest Indiana Ball Hockey League crest",
+    fit: "contain" as const,
+  },
 ] as const;
+
+export type LeagueStatus = "open" | "interest";
 
 export const leagues = [
   {
     id: "ellenberger",
     name: "Ellenberger Ball Hockey League",
+    shortName: "Ellenberger",
+    abbreviation: "EBHL",
     location: "Ellenberger Park, Irvington",
+    region: "Indianapolis",
     format: "5-on-5",
     surface: "Indoor Sport Court",
     description:
-      "IBHA's flagship full-size league at Ellenberger Park. Competitive 5-on-5 ball hockey on upgraded Sport Court flooring, the home rink for Indiana's growing ball hockey community.",
+      "IBHA's flagship full-size league. Competitive 5-on-5 ball hockey on upgraded Sport Court flooring at Ellenberger Park.",
     audience:
       "Competitive and recreational adult players ready for standard-format hockey.",
     href: externalLinks.ellenbergerLeague,
     image: communityPhotos.ellenberger.src,
     imageAlt: communityPhotos.ellenberger.alt,
     logo: "/assets/ellenberger-logo.png",
-    logoTile: "none",
+    logoTile: "none" as const,
     badge: "5v5",
+    status: "open" as LeagueStatus,
+    accent: "#dc8f28",
+    ctaLabel: "Register on Kreezee",
   },
   {
     id: "rooftop",
     name: "Indy Rooftop Hockey League",
+    shortName: "Rooftop",
+    abbreviation: "IRHL",
     location: "Near Eastside Indianapolis",
+    region: "Indianapolis",
     format: "3-on-3",
     surface: "Rooftop Dek Rink",
     description:
-      "Indianapolis's original rooftop hockey experience. A compact 60×40 ft rink delivers lightning-fast 3-on-3 action with 50+ active players and a tight-knit community vibe.",
+      "Indianapolis's original rooftop hockey experience. Lightning-fast 3-on-3 on a compact 60×40 ft dek with the city as the backdrop.",
     audience:
-      "Players who want fast, high-tempo games in a unique urban setting.",
+      "Players who want high-tempo games in a unique urban setting.",
     href: externalLinks.rooftopLeague,
-    image: communityPhotos.rooftop.src,
-    imageAlt: communityPhotos.rooftop.alt,
+    image: communityPhotos.irhlCover.src,
+    imageAlt: communityPhotos.irhlCover.alt,
     logo: "/assets/irhl.png",
-    logoTile: "none",
+    logoTile: "none" as const,
     badge: "3v3",
+    status: "open" as LeagueStatus,
+    accent: "#c42b3e",
+    ctaLabel: "Register on Kreezee",
+  },
+  {
+    id: "northwest",
+    name: "Northwest Indiana Ball Hockey League",
+    shortName: "Northwest Indiana",
+    abbreviation: "NWIBHL",
+    location: "Northwest Indiana",
+    region: "Northwest Indiana",
+    format: "League play",
+    surface: "Regional venues",
+    description:
+      "IBHA's newest chapter, expanding ball hockey into Northwest Indiana. Building the next rink community for players across the Region.",
+    audience:
+      "Players and partners ready to help launch ball hockey in Northwest Indiana.",
+    href: "/contact#partners",
+    image: communityPhotos.nwibhlCover.src,
+    imageAlt: communityPhotos.nwibhlCover.alt,
+    logo: "/assets/nwibhl-logo.png",
+    logoTile: "none" as const,
+    badge: "NEW",
+    status: "interest" as LeagueStatus,
+    accent: "#4da8f5",
+    ctaLabel: "Express Interest",
   },
 ] as const;
 
@@ -319,19 +318,53 @@ export const leagueTeamLogos = {
 } as const;
 
 export const leagueCompare = [
-  { label: "Format", ellenberger: "5-on-5", rooftop: "3-on-3" },
-  { label: "Rink Size", ellenberger: "Full-size indoor", rooftop: "60×40 ft rooftop" },
-  { label: "Surface", ellenberger: "Sport Court", rooftop: "Dek / outdoor surface" },
+  {
+    label: "Format",
+    ellenberger: "5-on-5",
+    rooftop: "3-on-3",
+    northwest: "League play",
+  },
+  {
+    label: "Surface",
+    ellenberger: "Indoor Sport Court",
+    rooftop: "Rooftop dek",
+    northwest: "Regional venues",
+  },
   {
     label: "Location",
     ellenberger: "Ellenberger Park, Irvington",
     rooftop: "Near Eastside Indy",
+    northwest: "Northwest Indiana",
   },
-  { label: "Vibe", ellenberger: "Standard league play", rooftop: "Fast, tight, urban" },
+  {
+    label: "Status",
+    ellenberger: "Registering now",
+    rooftop: "Registering now",
+    northwest: "Building interest",
+  },
   {
     label: "Best For",
     ellenberger: "Competitive & rec adults",
     rooftop: "High-tempo 3v3 players",
+    northwest: "Region players & partners",
+  },
+] as const;
+
+export const sponsorHighlights = [
+  {
+    title: "Game-Day Presence",
+    description:
+      "Logo placement, rink boards, and association visibility across IBHA league nights.",
+  },
+  {
+    title: "Community Reach",
+    description:
+      "Connect with players, families, and fans across Indianapolis and Northwest Indiana.",
+  },
+  {
+    title: "Season Packages",
+    description:
+      "Flexible 2027 sponsorship levels sized for local businesses through major partners.",
   },
 ] as const;
 
@@ -353,9 +386,9 @@ export const contactAudiences = [
   {
     title: "Sponsors & Partners",
     description:
-      "Help us build Indiana's ball hockey future. We're actively seeking sponsors, partners, and donors for our year-round facility vision.",
-    cta: "Reach Out",
-    href: socialLinks.facebook,
+      "Help us grow Indiana ball hockey. Submit the 2027 sponsorship form online or reach out to talk packages.",
+    cta: "Sponsorship Form",
+    href: "/sponsor",
   },
   {
     title: "Parents & Youth",
@@ -367,6 +400,12 @@ export const contactAudiences = [
 ] as const;
 
 export const timelineEvents = [
+  {
+    year: "1960s-2009",
+    title: "Ellenberger's Ice Era",
+    description:
+      "Ellenberger Park's outdoor ice rink (enclosed in 1974) hosts public skating and competitive hockey until costly repairs force closure in 2009.",
+  },
   {
     year: "2009",
     title: "A Building Finds New Purpose",
@@ -386,12 +425,6 @@ export const timelineEvents = [
     title: "Indy Rooftop Hockey League Grows",
     description:
       "The IRHL thrives on the compact 60×40 ft rooftop rink. Fast 3-on-3 play attracts 50+ active players as interest in rooftop hockey continues to grow.",
-  },
-  {
-    year: "1960s-2009",
-    title: "Ellenberger's Ice Era",
-    description:
-      "Ellenberger Park's outdoor ice rink (enclosed in 1974) hosts public skating and competitive hockey until costly repairs force closure in 2009.",
   },
   {
     year: "2015",
@@ -424,5 +457,11 @@ export const timelineEvents = [
       "After two valuable NBHL seasons, IBHA leadership pivots to concentrate on growing ball hockey locally. The NBHL relationship remains strong for players seeking national competition.",
     quote:
       "Our time in the NBHL has been invaluable... However, we believe that the best path forward is to concentrate on growing and nurturing the sport here at home.",
+  },
+  {
+    year: "2026",
+    title: "Statewide Association",
+    description:
+      "IBHA oversees Ellenberger, Indy Rooftop, and the launch of Northwest Indiana Ball Hockey League, uniting Indiana under one association brand.",
   },
 ] as const;

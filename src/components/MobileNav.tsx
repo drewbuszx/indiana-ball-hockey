@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/lib/content";
+import { navLinks, registerPath } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -92,8 +92,8 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
         <div className="mt-auto pt-8">
           <Button
-            href="/leagues#register"
-            className="w-full"
+            href={registerPath}
+            className="w-full rounded-sm"
             tabIndex={open ? 0 : -1}
             onClick={onClose}
           >

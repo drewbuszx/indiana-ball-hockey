@@ -25,7 +25,7 @@ const products = [
   {
     title: "League Swag",
     description:
-      "Show your Ellenberger or Rooftop pride with official league merchandise.",
+      "Show your Ellenberger, Rooftop, or Northwest Indiana pride with official league merchandise.",
     image: communityPhotos.storeJersey1,
     contain: true,
   },

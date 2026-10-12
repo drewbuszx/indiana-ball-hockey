@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/lib/content";
+import { brandAssets, navLinks, registerPath, siteConfig } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,14 +47,14 @@ export function Header() {
           <Link
             href="/"
             className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-arena rounded-lg"
-            aria-label="Indiana Ball Hockey Association Home"
+            aria-label={`${siteConfig.name} Home`}
           >
             <Image
-              src="/assets/logo.png"
+              src={brandAssets.logo}
               alt=""
-              width={180}
+              width={220}
               height={72}
-              className="h-16 w-auto transition-transform group-hover:scale-105 sm:h-[72px]"
+              className="h-12 w-auto transition-transform group-hover:scale-105 sm:h-14"
               priority
             />
           </Link>
@@ -88,7 +88,7 @@ export function Header() {
 
           <div className="hidden items-center gap-4 lg:flex">
             <SocialLinks size="sm" />
-            <Button href="/leagues#register" size="sm">
+            <Button href={registerPath} size="sm" className="rounded-sm">
               Join a League
             </Button>
           </div>

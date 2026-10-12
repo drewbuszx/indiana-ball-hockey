@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { AssociationHero } from "@/components/AssociationHero";
 import { Button } from "@/components/Button";
-import { FeatureCard, QuickPathCard } from "@/components/LeagueCard";
-import { Gallery } from "@/components/Gallery";
-import { Hero } from "@/components/Hero";
+import { LeaguePortal } from "@/components/LeaguePortal";
+import { RegisterSection } from "@/components/RegisterSection";
 import { Section, SectionHeader } from "@/components/Section";
-import { StaggerChildren } from "@/components/StaggerChildren";
 import { SocialLinks } from "@/components/SocialLinks";
+import { SponsorSection } from "@/components/SponsorSection";
+import { StaggerChildren } from "@/components/StaggerChildren";
 import {
   communityPhotos,
-  galleryPhotos,
-  quickPaths,
-  registerPath,
+  externalLinks,
+  leagues,
   siteConfig,
-  socialLinks,
-  whyBallHockey,
 } from "@/lib/content";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -26,172 +24,84 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <Hero
-        eyebrow="Indiana Ball Hockey Association"
-        title="Hockey Without The Ice."
-        subtitle="Run instead of skate. Compete at Ellenberger or the rooftop. IBHA is building Indiana's ball hockey community, from beginners to veterans."
-        primaryCta={{ label: "Find a League", href: "/leagues" }}
-        secondaryCta={{
-          label: "What Is Ball Hockey?",
-          href: "#what-is-ball-hockey",
-        }}
-        image={communityPhotos.heroAction.src}
-        imageAlt={communityPhotos.heroAction.alt}
-        priority
-      />
+      <AssociationHero />
 
-      <Section dark={false}>
-        <SectionHeader
-          eyebrow="Get Started"
-          title="Your Path to the Rink"
-          description="Whether you're curious, competitive, or ready to sponsor, there's a lane for you."
-          align="center"
-          className="mx-auto"
-        />
-        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {quickPaths.map((path) => (
-            <QuickPathCard key={path.title} {...path} />
+      <Section id="leagues" className="!py-12 sm:!py-14 lg:!py-16">
+        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            eyebrow="Our Leagues"
+            title="Three Ways to Play"
+            description="IBHA oversees leagues across Indiana. Pick your rink, then jump into registration or express interest."
+            className="mb-0"
+          />
+          <Button href="/leagues" variant="secondary" className="shrink-0 self-start sm:self-auto">
+            League Details
+          </Button>
+        </div>
+        <StaggerChildren
+          className="grid gap-3 lg:grid-cols-3 lg:gap-4"
+          staggerMs={90}
+        >
+          {leagues.map((league) => (
+            <LeaguePortal key={league.id} league={league} />
           ))}
         </StaggerChildren>
       </Section>
 
-      <Section id="what-is-ball-hockey" withRinkLines>
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <SectionHeader
-              eyebrow="The Sport"
-              title="What Is Ball Hockey?"
-              description="Ball hockey (also called dek, floor, or street hockey) is hockey you play on foot. Same intensity. Same teamwork. No skates required."
+      <div className="speed-stripe h-1.5 w-full" aria-hidden="true" />
+
+      <RegisterSection dark={false} />
+
+      <SponsorSection />
+
+      <Section className="!py-12 sm:!py-14">
+        <div className="grid items-center gap-8 overflow-hidden border border-white/10 bg-arena-elevated lg:grid-cols-2">
+          <div className="relative aspect-[16/11] lg:aspect-auto lg:min-h-[20rem]">
+            <Image
+              src={communityPhotos.storeHeroBg.src}
+              alt={communityPhotos.storeHeroBg.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <p className="prose-body">
-              Players run instead of skate and use a ball instead of a puck. That
-              makes the sport more accessible and far more affordable than ice
-              hockey, while keeping the nonstop action and competitiveness that
-              make hockey great.
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-arena-elevated/40 max-lg:bg-gradient-to-t max-lg:from-arena-elevated max-lg:to-transparent" />
+          </div>
+          <div className="px-6 py-8 sm:px-10 sm:py-10">
+            <p className="eyebrow mb-3">Official Merch</p>
+            <h2 className="headline-lg">Wear the Association</h2>
+            <p className="mt-3 max-w-md prose-body">
+              Jerseys, league swag, and IBHA brand gear through Hagan Custom
+              Sports. Support the sport every time you pull on the colors.
             </p>
-            <p className="mt-4 prose-body">
-              Ball hockey has its own pace, rules, and culture, and it&apos;s
-              growing fast across the country. In Indiana, IBHA is at the center
-              of that growth.
-            </p>
-            <div className="mt-8">
-              <Button href="/about" variant="secondary">
-                Our Story
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Button href={externalLinks.store} external>
+                Shop the Store
+              </Button>
+              <Button href="/store" variant="secondary">
+                Merch Overview
               </Button>
             </div>
-          </div>
-          <div className="group media-frame aspect-[4/3]">
-            <Image
-              src={communityPhotos.nbhlAction.src}
-              alt={communityPhotos.nbhlAction.alt}
-              fill
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              loading="lazy"
-            />
-            <div className="media-frame-overlay bg-gradient-to-tr from-arena/60 to-transparent" />
           </div>
         </div>
       </Section>
 
-      <Section dark={false}>
+      <Section dark={false} className="!py-12 sm:!py-16">
         <div className="mx-auto max-w-3xl text-center">
           <SectionHeader
-            eyebrow="Leagues"
-            title="Two Rinks. Two Experiences."
-            description="Full-size 5-on-5 at Ellenberger Park or lightning-fast 3-on-3 on Indy's rooftop rink. Compare formats, then join when you're ready."
+            eyebrow="The Association"
+            title="Built for Indiana Ball Hockey"
+            description="IBHA connects players, partners, and communities under one brand. No skates required. Just hockey."
             align="center"
             className="mx-auto"
           />
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <Button href="/leagues">Explore Leagues</Button>
-            <Button href={registerPath} variant="secondary">
-              Join a League
+            <Button href="/about" variant="secondary">
+              Our Story
             </Button>
+            <Button href="/contact">Contact IBHA</Button>
           </div>
-        </div>
-      </Section>
-
-      <Section withRinkLines>
-        <SectionHeader
-          eyebrow="Why Ball Hockey"
-          title="All the Hockey. None of the Barriers."
-          description="Accessible, affordable, and fiercely competitive: ball hockey is how more Hoosiers get on the rink."
-          align="center"
-          className="mx-auto"
-        />
-        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {whyBallHockey.map((item) => (
-            <FeatureCard key={item.title} {...item} />
-          ))}
-        </StaggerChildren>
-      </Section>
-
-      <Section dark={false}>
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="group media-frame aspect-[16/10]">
-            <Image
-              src={communityPhotos.rooftopRink.src}
-              alt={communityPhotos.rooftopRink.alt}
-              fill
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              loading="lazy"
-            />
-            <div className="media-frame-overlay" />
-          </div>
-          <div>
-            <SectionHeader
-              eyebrow="Community"
-              title="Built in Indianapolis. Growing Across Indiana."
-              description="From a rooftop dream in 2011 to Ellenberger's upgraded rink and beyond, IBHA carries decades of Indy hockey history forward."
-            />
-            <p className="prose-body">
-              What started as a Pittsburgh transplant&apos;s vision for rooftop
-              dek hockey has evolved into a statewide association with two
-              active leagues, a passionate player base, and ambitions for a
-              permanent year-round home.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-              <Button href="/about">Read Our History</Button>
-              <Button href="/contact#partners" variant="secondary">
-                Partner With Us
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section withRinkLines>
-        <SectionHeader
-          eyebrow="On the Rink"
-          title="From the Community"
-          description="Champions, jerseys, and game-day moments straight from @indianaballhockey."
-          align="center"
-          className="mx-auto"
-        />
-        <Gallery photos={galleryPhotos} />
-        <div className="mt-10 text-center">
-          <Button href={socialLinks.instagram} external variant="secondary">
-            Follow on Instagram
-          </Button>
-        </div>
-      </Section>
-
-      <Section className="bg-gradient-to-b from-arena to-arena-surface">
-        <div className="glass-card mx-auto max-w-4xl p-8 text-center ring-1 ring-white/10 transition-all duration-300 hover:border-rink-400/25 hover:shadow-2xl hover:shadow-rink-500/10 sm:p-12">
-          <p className="eyebrow mb-3 text-gold">Stay Connected</p>
-          <h2 className="headline-lg">Join the Conversation</h2>
-          <p className="mx-auto mt-4 max-w-xl prose-body">
-            Follow IBHA for league updates, game highlights, and community news.
-            Questions? We&apos;re always happy to help new players find their
-            rink.
-          </p>
           <div className="mt-8 flex justify-center">
             <SocialLinks size="lg" />
-          </div>
-          <div className="mt-8">
-            <Button href="/contact">Contact IBHA</Button>
           </div>
         </div>
       </Section>

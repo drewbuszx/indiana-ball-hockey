@@ -8,6 +8,8 @@ import {
   communityPhotos,
   contactConnectPhotos,
   contactAudiences,
+  leagues,
+  registerPath,
 } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
@@ -77,29 +79,35 @@ export default function ContactPage() {
           className="mx-auto"
         />
         <StaggerChildren className="grid gap-6 sm:grid-cols-2" staggerMs={100}>
-          {contactAudiences.map((item) => (
-            <article
-              key={item.title}
-              className="glass-card-interactive flex flex-col p-6"
-            >
-              <h3 className="font-display text-lg font-bold uppercase">
-                {item.title}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-white/65">
-                {item.description}
-              </p>
-              <Link
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold transition-colors hover:text-gold-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400 rounded"
+          {contactAudiences.map((item) => {
+            const external = item.href.startsWith("http");
+            return (
+              <article
+                key={item.title}
+                className="glass-card-interactive flex flex-col p-6"
               >
-                {item.cta}
-                <span aria-hidden="true">→</span>
-                <span className="sr-only">(opens in new tab)</span>
-              </Link>
-            </article>
-          ))}
+                <h3 className="font-display text-lg font-bold uppercase">
+                  {item.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/65">
+                  {item.description}
+                </p>
+                <Link
+                  href={item.href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="mt-4 inline-flex items-center gap-1 rounded text-sm font-semibold text-gold transition-colors hover:text-gold-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400"
+                >
+                  {item.cta}
+                  <span aria-hidden="true">→</span>
+                  {external && (
+                    <span className="sr-only">(opens in new tab)</span>
+                  )}
+                </Link>
+              </article>
+            );
+          })}
         </StaggerChildren>
       </Section>
 
@@ -114,21 +122,21 @@ export default function ContactPage() {
               and see rosters.
             </p>
             <div className="mt-6 flex flex-col gap-3">
-              <Button href={externalLinks.ellenbergerLeague} external>
-                Ellenberger League
-              </Button>
-              <Button
-                href={externalLinks.rooftopLeague}
-                external
-                variant="secondary"
-              >
-                Rooftop League
-              </Button>
+              {leagues.map((league) => (
+                <Button
+                  key={league.id}
+                  href={league.href}
+                  external={league.status === "open"}
+                  variant={league.status === "open" ? "primary" : "secondary"}
+                >
+                  {league.shortName}
+                </Button>
+              ))}
             </div>
             <p className="mt-4 text-sm text-white/45">
               Prefer a side-by-side view?{" "}
               <Link
-                href="/leagues#register"
+                href={registerPath}
                 className="font-medium text-rink-300 underline-offset-4 hover:text-gold hover:underline"
               >
                 Join a league

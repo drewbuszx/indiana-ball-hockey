@@ -16,7 +16,7 @@ interface ButtonProps extends Omit<ComponentProps<"button">, "children"> {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-gold text-arena hover:bg-gold-light focus-visible:ring-gold shadow-lg shadow-gold/25 hover:shadow-xl hover:shadow-gold/35 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98]",
+    "bg-gold text-navy hover:bg-gold-light focus-visible:ring-gold shadow-lg shadow-gold/25 hover:shadow-xl hover:shadow-gold/35 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98]",
   secondary:
     "border border-rink-400/60 bg-rink-500/10 text-white hover:bg-rink-500/30 hover:border-rink-300 focus-visible:ring-rink-400 hover:-translate-y-1 hover:shadow-lg hover:shadow-rink-500/15 active:translate-y-0 active:scale-[0.98]",
   ghost:

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import type { LeagueStatus } from "@/lib/content";
 import { Button } from "./Button";
 
 interface LeagueCardProps {
@@ -15,6 +15,9 @@ interface LeagueCardProps {
   logo?: string;
   logoTile?: "light" | "dark" | "none";
   badge: string;
+  status?: LeagueStatus;
+  accent?: string;
+  ctaLabel?: string;
 }
 
 export function LeagueCard({
@@ -30,9 +33,12 @@ export function LeagueCard({
   logo,
   logoTile = "light",
   badge,
+  status = "open",
+  accent = "#ff6a1f",
+  ctaLabel,
 }: LeagueCardProps) {
   const isTransparentLogo = logoTile === "none";
-  const isRooftop = badge === "3v3";
+  const isOpen = status === "open";
   const logoTileClass =
     logoTile === "dark"
       ? "border border-white/20 bg-black/90 p-3 shadow-2xl shadow-black/60 ring-1 ring-white/10"
@@ -45,9 +51,10 @@ export function LeagueCard({
   const contentClearance = isTransparentLogo
     ? "pr-28 sm:pr-36 md:pr-44"
     : "pr-24 sm:pr-32";
+  const buttonLabel = ctaLabel ?? (isOpen ? "Register on Kreezee" : "Express Interest");
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-arena-elevated shadow-xl shadow-black/20 transition-all duration-300 hover:-translate-y-1.5 hover:border-rink-400/45 hover:shadow-2xl hover:shadow-rink-500/15">
+    <article className="group relative flex flex-col overflow-hidden border border-white/10 bg-arena-elevated shadow-xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-2xl hover:shadow-gold/10">
       <div className="relative">
         <div className="relative aspect-[16/10] overflow-hidden">
           <Image
@@ -59,13 +66,9 @@ export function LeagueCard({
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-arena-elevated via-arena-elevated/25 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-rink-500/10 via-transparent to-gold/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <span
-            className={`absolute left-4 top-4 rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg ${
-              isRooftop
-                ? "bg-gold text-arena shadow-gold/30"
-                : "bg-rink-400 text-arena shadow-rink-500/30"
-            }`}
+            className="absolute left-4 top-4 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-arena shadow-lg"
+            style={{ backgroundColor: accent }}
           >
             {badge}
           </span>
@@ -91,10 +94,10 @@ export function LeagueCard({
         <div
           className={`mb-3 flex flex-wrap gap-2 text-xs uppercase tracking-wider text-rink-300 ${contentClearance}`}
         >
-          <span className="rounded-full border border-rink-400/20 bg-rink-500/10 px-2.5 py-0.5">
+          <span className="border border-rink-400/20 bg-rink-500/10 px-2.5 py-0.5">
             {format}
           </span>
-          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5">
+          <span className="border border-white/10 bg-white/5 px-2.5 py-0.5">
             {surface}
           </span>
         </div>
@@ -116,79 +119,21 @@ export function LeagueCard({
         </p>
 
         <div className="mt-6">
-          <Button href={href} external className="w-full sm:w-auto">
-            Register on Kreezee
+          <Button
+            href={href}
+            external={isOpen}
+            className="w-full rounded-sm sm:w-auto"
+            variant={isOpen ? "primary" : "secondary"}
+          >
+            {buttonLabel}
           </Button>
           <p className="mt-2 text-xs text-white/40">
-            Sign up, schedules &amp; rosters on Kreezee
+            {isOpen
+              ? "Sign up, schedules & rosters on Kreezee"
+              : "Launching soon. Reach out to get involved."}
           </p>
         </div>
       </div>
     </article>
-  );
-}
-
-export function FeatureCard({
-  title,
-  description,
-  stat,
-  statLabel,
-}: {
-  title: string;
-  description: string;
-  stat: string;
-  statLabel: string;
-}) {
-  return (
-    <div className="glass-card-interactive group relative overflow-hidden p-6">
-      <div
-        className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-rink-500/10 blur-2xl transition-all duration-500 group-hover:bg-gold/15"
-        aria-hidden="true"
-      />
-      <div className="relative mb-4 flex items-baseline gap-2">
-        <span className="font-display text-4xl font-bold text-rink-400 transition-colors duration-300 group-hover:text-gold">
-          {stat}
-        </span>
-        <span className="text-xs uppercase tracking-widest text-white/40">
-          {statLabel}
-        </span>
-      </div>
-      <h3 className="relative font-display text-lg font-bold uppercase">
-        {title}
-      </h3>
-      <p className="relative mt-2 prose-muted">{description}</p>
-    </div>
-  );
-}
-
-export function QuickPathCard({
-  title,
-  description,
-  href,
-  cta = "Explore",
-}: {
-  title: string;
-  description: string;
-  href: string;
-  cta?: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="glass-card-interactive group relative flex flex-col overflow-hidden p-6 hover:border-gold/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rink-400"
-    >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rink-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        aria-hidden="true"
-      />
-      <h3 className="font-display text-2xl font-bold uppercase text-rink-300 transition-colors duration-300 group-hover:text-gold">
-        {title}
-      </h3>
-      <p className="mt-2 flex-1 prose-muted">{description}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold transition-transform duration-300 group-hover:translate-x-1.5">
-        {cta}
-        <span aria-hidden="true">→</span>
-      </span>
-    </Link>
   );
 }

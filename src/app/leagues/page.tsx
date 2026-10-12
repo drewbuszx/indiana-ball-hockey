@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
 import { LeagueCard } from "@/components/LeagueCard";
+import { LeagueTeamLogos } from "@/components/LeagueTeamLogos";
 import { RegisterSection } from "@/components/RegisterSection";
 import { Section, SectionHeader } from "@/components/Section";
+import { StaggerChildren } from "@/components/StaggerChildren";
 import {
-  leagues,
   communityPhotos,
-  leagueTeamLogos,
   leagueCompare,
+  leagueTeamLogos,
+  leagues,
 } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
-import Image from "next/image";
-import { LeagueTeamLogos } from "@/components/LeagueTeamLogos";
-import { StaggerChildren } from "@/components/StaggerChildren";
 
 export const metadata: Metadata = pageMetadata({
   title: "Leagues",
   description:
-    "Join the Ellenberger Ball Hockey League (5-on-5) or Indy Rooftop Hockey League (3-on-3). Find your fit with IBHA in Indianapolis.",
+    "Explore IBHA leagues: Ellenberger (5-on-5), Indy Rooftop (3-on-3), and Northwest Indiana Ball Hockey. Find your fit and join.",
   path: "/leagues",
 });
 
@@ -29,8 +29,8 @@ export default function LeaguesPage() {
         compact
         eyebrow="Play"
         title="Find Your League"
-        subtitle="Two distinct experiences in Indianapolis: full-size 5-on-5 competition at Ellenberger Park and lightning-fast 3-on-3 on the city's only rooftop rink."
-        primaryCta={{ label: "Join a League", href: "#register" }}
+        subtitle="Three IBHA experiences across Indiana: full-size 5-on-5 at Ellenberger, lightning-fast rooftop 3-on-3, and a new chapter in Northwest Indiana."
+        primaryCta={{ label: "Join a League", href: "#join" }}
         secondaryCta={{ label: "Compare Leagues", href: "#compare" }}
         image={communityPhotos.leaguesHero.src}
         imageAlt={communityPhotos.leaguesHero.alt}
@@ -39,12 +39,12 @@ export default function LeaguesPage() {
       <Section>
         <SectionHeader
           eyebrow="Our Leagues"
-          title="Ellenberger & Rooftop"
-          description="Two distinct Indianapolis experiences: full-size 5-on-5 at Ellenberger Park and fast 3-on-3 on the city's only rooftop rink."
+          title="Ellenberger, Rooftop & Northwest"
+          description="One association. Distinct rinks and formats. Pick the experience that fits how you want to play."
           align="center"
           className="mx-auto mb-8"
         />
-        <StaggerChildren className="grid gap-8 lg:grid-cols-2" staggerMs={120}>
+        <StaggerChildren className="grid gap-6 lg:grid-cols-3" staggerMs={100}>
           {leagues.map((league) => (
             <LeagueCard key={league.id} {...league} />
           ))}
@@ -71,29 +71,22 @@ export default function LeaguesPage() {
         <p className="mb-4 text-center text-xs text-white/50 md:hidden">
           Swipe to compare leagues →
         </p>
-        <div className="glass-card relative overflow-hidden ring-1 ring-white/5">
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-8 bg-gradient-to-l from-arena-elevated to-transparent md:hidden" />
+        <div className="overflow-hidden border border-white/10 bg-arena-elevated/80">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px] border-collapse text-left text-sm">
+            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 bg-arena-elevated/80">
-                  <th
-                    className="py-5 pr-4 font-display uppercase text-white/50"
-                    scope="col"
-                  >
+                <tr className="border-b border-white/10 bg-arena">
+                  <th className="py-5 pr-4 font-display uppercase text-white/50" scope="col">
                     &nbsp;
                   </th>
-                  <th
-                    className="py-5 px-4 font-display text-sm uppercase text-rink-300 sm:text-base"
-                    scope="col"
-                  >
+                  <th className="px-4 py-5 font-display text-sm uppercase text-[#dc8f28] sm:text-base" scope="col">
                     Ellenberger
                   </th>
-                  <th
-                    className="py-5 pl-4 font-display text-sm uppercase text-gold sm:text-base"
-                    scope="col"
-                  >
+                  <th className="px-4 py-5 font-display text-sm uppercase text-[#c42b3e] sm:text-base" scope="col">
                     Rooftop
+                  </th>
+                  <th className="py-5 pl-4 font-display text-sm uppercase text-[#4da8f5] sm:text-base" scope="col">
+                    Northwest
                   </th>
                 </tr>
               </thead>
@@ -103,14 +96,12 @@ export default function LeaguesPage() {
                     key={row.label}
                     className="border-b border-white/5 even:bg-white/[0.02]"
                   >
-                    <th
-                      className="py-4 pr-4 font-medium text-white/50"
-                      scope="row"
-                    >
+                    <th className="py-4 pr-4 font-medium text-white/50" scope="row">
                       {row.label}
                     </th>
-                    <td className="py-4 px-4">{row.ellenberger}</td>
-                    <td className="py-4 pl-4">{row.rooftop}</td>
+                    <td className="px-4 py-4">{row.ellenberger}</td>
+                    <td className="px-4 py-4">{row.rooftop}</td>
+                    <td className="py-4 pl-4">{row.northwest}</td>
                   </tr>
                 ))}
               </tbody>
@@ -120,13 +111,13 @@ export default function LeaguesPage() {
       </Section>
 
       <Section>
-        <StaggerChildren className="grid gap-4 sm:grid-cols-3" staggerMs={80}>
+        <StaggerChildren className="grid gap-3 sm:grid-cols-3" staggerMs={80}>
           {[
             communityPhotos.ellen3,
-            communityPhotos.rooftopKreezeeBg,
-            communityPhotos.orange,
+            communityPhotos.irhlCover,
+            communityPhotos.nwibhlCover,
           ].map((photo) => (
-            <div key={photo.src} className="group media-frame aspect-[16/10]">
+            <div key={photo.src} className="group relative aspect-[16/10] overflow-hidden border border-white/10">
               <Image
                 src={photo.src}
                 alt={photo.alt}
@@ -135,24 +126,23 @@ export default function LeaguesPage() {
                 sizes="(max-width: 640px) 100vw, 33vw"
                 loading="lazy"
               />
-              <div className="media-frame-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-t from-arena/50 to-transparent" />
             </div>
           ))}
         </StaggerChildren>
       </Section>
 
       <Section>
-        <div className="glass-card mx-auto max-w-3xl p-8 text-center ring-1 ring-rink-400/10 transition-all duration-300 hover:border-rink-400/25 hover:shadow-2xl hover:shadow-rink-500/10 sm:p-12">
+        <div className="mx-auto max-w-3xl border border-white/10 bg-arena-elevated/60 p-8 text-center sm:p-12">
           <h2 className="headline-lg">Not Sure Where to Start?</h2>
           <p className="mx-auto mt-4 max-w-lg prose-body">
             New to ball hockey? Returning player? We&apos;ll point you to the
-            right league. Reach out on social or through our contact page. No
-            experience required.
+            right league. Reach out. No experience required.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
             <Button href="/contact">Contact IBHA</Button>
-            <Button href="/#what-is-ball-hockey" variant="secondary">
-              Learn About Ball Hockey
+            <Button href="/about" variant="secondary">
+              Our Story
             </Button>
           </div>
         </div>

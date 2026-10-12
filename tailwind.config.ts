@@ -9,6 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Brand navy from IBHA Brand Colors (#001D48)
+        navy: {
+          DEFAULT: "#001d48",
+          soft: "#0a2a5c",
+          deep: "#00102c",
+        },
         rink: {
           50: "#e8f4ff",
           100: "#c5e4ff",
@@ -22,16 +28,16 @@ const config: Config = {
           900: "#122f56",
         },
         arena: {
-          DEFAULT: "#0a0e17",
-          surface: "#111827",
-          elevated: "#1a2234",
-          border: "#2a3548",
+          DEFAULT: "#000d24",
+          surface: "#001d48",
+          elevated: "#0a2a5c",
+          border: "#1a3a6a",
         },
-        // Brand orange sampled from public/assets/logo.png (token name kept as gold for class compatibility)
+        // Brand orange from IBHA Brand Colors (#FF6A1F)
         gold: {
-          DEFAULT: "#fc6619",
+          DEFAULT: "#ff6a1f",
           light: "#ff8533",
-          muted: "#b34710",
+          muted: "#c24f12",
         },
       },
       fontFamily: {
@@ -40,11 +46,11 @@ const config: Config = {
       },
       backgroundImage: {
         "rink-glow":
-          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(13,110,196,0.35), transparent)",
+          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,29,72,0.55), transparent)",
         "arena-lights":
-          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(252,102,25,0.08), transparent 70%)",
+          "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,106,31,0.1), transparent 70%)",
         "gold-sheen":
-          "linear-gradient(135deg, rgba(252,102,25,0.15) 0%, transparent 50%, rgba(13,110,196,0.1) 100%)",
+          "linear-gradient(135deg, rgba(255,106,31,0.16) 0%, transparent 50%, rgba(13,110,196,0.1) 100%)",
       },
       spacing: {
         "18": "4.5rem",
